@@ -1,0 +1,126 @@
+const vscode = require('vscode');
+
+/**
+ * Provides hover information for Tesseract language elements
+ */
+const hoverProvider = {
+    /**
+     * Provide hover information for the given position
+     * @param {vscode.TextDocument} document 
+     * @param {vscode.Position} position 
+     * @param {vscode.CancellationToken} token 
+     * @returns {vscode.Hover}
+     */
+    provideHover(document, position, token) {
+        const wordRange = document.getWordRangeAtPosition(position);
+        if (!wordRange) {
+            return null;
+        }
+
+        const word = document.getText(wordRange);
+        
+        // Check for keywords
+        const keywordInfo = this.getKeywordInfo(word);
+        if (keywordInfo) {
+            return new vscode.Hover(keywordInfo);
+        }
+
+        // Check for built-in functions
+        const builtinInfo = this.getBuiltinFunctionInfo(word);
+        if (builtinInfo) {
+            return new vscode.Hover(builtinInfo);
+        }
+
+        // Check for types
+        const typeInfo = this.getTypeInfo(word);
+        if (typeInfo) {
+            return new vscode.Hover(typeInfo);
+        }
+
+        return null;
+    },
+
+    /**
+     * Get information about Tesseract keywords
+     * @param {string} keyword 
+     * @returns {vscode.MarkdownString | null}
+     */
+    getKeywordInfo(keyword) {
+        const keywordMap = {
+            'if$': new vscode.MarkdownString('**Conditional Statement**\n\nUsed for conditional execution of code.\n\n```tesseract\nif$ condition {\n    # code\n}\n```'),
+            'else$': new vscode.MarkdownString('**Else Clause**\n\nUsed with if$ for alternative execution path.\n\n```tesseract\nif$ condition {\n    # code\n} else$ {\n    # alternative code\n}\n```'),
+            'elseif$': new vscode.MarkdownString('**Else If Clause**\n\nUsed for multiple conditional branches.\n\n```tesseract\nif$ condition1 {\n    # code\n} elseif$ condition2 {\n    # alternative code\n}\n```'),
+            'loop$': new vscode.MarkdownString('**Loop Statement**\n\nUsed for iterative execution.\n\n```tesseract\nloop$ condition {\n    # code\n}\n```'),
+            'import$': new vscode.MarkdownString('**Import Statement**\n\nUsed to import modules.\n\n```tesseract\nimport$ "module_name"\n```'),
+            'let$': new vscode.MarkdownString('**Variable Declaration**\n\nUsed to declare variables.\n\n```tesseract\nlet$ variable_name = value\n```'),
+            'func$': new vscode.MarkdownString('**Function Declaration**\n\nUsed to declare functions.\n\n```tesseract\nfunc$ function_name(param1, param2) {\n    # code\n}\n```'),
+            'class$': new vscode.MarkdownString('**Class Declaration**\n\nUsed to declare classes.\n\n```tesseract\nclass$ ClassName {\n    # properties and methods\n}\n```'),
+            'if': new vscode.MarkdownString('**Conditional Statement Keyword**\n\nUse with $ suffix: `if$`'),
+            'else': new vscode.MarkdownString('**Else Clause Keyword**\n\nUse with $ suffix: `else$`'),
+            'elseif': new vscode.MarkdownString('**Else If Clause Keyword**\n\nUse with $ suffix: `elseif$`'),
+            'loop': new vscode.MarkdownString('**Loop Statement Keyword**\n\nUse with $ suffix: `loop$`'),
+            'import': new vscode.MarkdownString('**Import Statement Keyword**\n\nUse with $ suffix: `import$`'),
+            'let': new vscode.MarkdownString('**Variable Declaration Keyword**\n\nUse with $ suffix: `let$`'),
+            'func': new vscode.MarkdownString('**Function Declaration Keyword**\n\nUse with $ suffix: `func$`'),
+            'class': new vscode.MarkdownString('**Class Declaration Keyword**\n\nUse with $ suffix: `class$`'),
+            'and': new vscode.MarkdownString('**Logical AND Operator**\n\nReturns true if both operands are true.'),
+            'or': new vscode.MarkdownString('**Logical OR Operator**\n\nReturns true if at least one operand is true.'),
+            'not': new vscode.MarkdownString('**Logical NOT Operator**\n\nReturns the opposite boolean value of the operand.'),
+            'true': new vscode.MarkdownString('**Boolean Value: True**\n\nRepresents a boolean true value.'),
+            'false': new vscode.MarkdownString('**Boolean Value: False**\n\nRepresents a boolean false value.')
+        };
+
+        return keywordMap[keyword] || null;
+    },
+
+    /**
+     * Get information about built-in functions
+     * @param {string} funcName 
+     * @returns {vscode.MarkdownString | null}
+     */
+    getBuiltinFunctionInfo(funcName) {
+        const functionMap = {
+            'print': new vscode.MarkdownString('**Print Function**\n\nPrints values to the console.\n\n```tesseract\n::print(value)\n```'),
+            'len': new vscode.MarkdownString('**Length Function**\n\nReturns the length of a collection.\n\n```tesseract\n::len(collection)\n```'),
+            'append': new vscode.MarkdownString('**Append Function**\n\nAppends an element to the end of a collection.\n\n```tesseract\n::append(collection, element)\n```'),
+            'prepend': new vscode.MarkdownString('**Prepend Function**\n\nAdds an element to the beginning of a collection.\n\n```tesseract\n::prepend(collection, element)\n```'),
+            'pop': new vscode.MarkdownString('**Pop Function**\n\nRemoves and returns the last element of a collection.\n\n```tesseract\n::pop(collection)\n```'),
+            'insert': new vscode.MarkdownString('**Insert Function**\n\nInserts an element at a specific position in a collection.\n\n```tesseract\n::insert(collection, position, element)\n```'),
+            'remove': new vscode.MarkdownString('**Remove Function**\n\nRemoves an element from a collection.\n\n```tesseract\n::remove(collection, element)\n```'),
+            'pattern_match': new vscode.MarkdownString('**Pattern Match Function**\n\nMatches a pattern against a value.\n\n```tesseract\n::pattern_match(value, pattern)\n```'),
+            'get': new vscode.MarkdownString('**Get Function**\n\nRetrieves a value by key from a dictionary.\n\n```tesseract\n::get(dictionary, key)\n```'),
+            'set': new vscode.MarkdownString('**Set Function**\n\nSets a value by key in a dictionary.\n\n```tesseract\n::set(dictionary, key, value)\n```'),
+            'keys': new vscode.MarkdownString('**Keys Function**\n\nReturns all keys in a dictionary.\n\n```tesseract\n::keys(dictionary)\n```'),
+            'values': new vscode.MarkdownString('**Values Function**\n\nReturns all values in a dictionary.\n\n```tesseract\n::values(dictionary)\n```'),
+            'push': new vscode.MarkdownString('**Push Function**\n\nPushes an element onto a stack.\n\n```tesseract\n::push(stack, element)\n```'),
+            'peek': new vscode.MarkdownString('**Peek Function**\n\nReturns the top element of a stack without removing it.\n\n```tesseract\n::peek(stack)\n```'),
+            'size': new vscode.MarkdownString('**Size Function**\n\nReturns the number of elements in a collection.\n\n```tesseract\n::size(collection)\n```'),
+            'empty': new vscode.MarkdownString('**Empty Function**\n\nChecks if a collection is empty.\n\n```tesseract\n::empty(collection)\n```'),
+            'enqueue': new vscode.MarkdownString('**Enqueue Function**\n\nAdds an element to the end of a queue.\n\n```tesseract\n::enqueue(queue, element)\n```'),
+            'dequeue': new vscode.MarkdownString('**Dequeue Function**\n\nRemoves and returns the first element of a queue.\n\n```tesseract\n::dequeue(queue)\n```'),
+            'front': new vscode.MarkdownString('**Front Function**\n\nReturns the first element of a queue without removing it.\n\n```tesseract\n::front(queue)\n```'),
+            'back': new vscode.MarkdownString('**Back Function**\n\nReturns the last element of a queue without removing it.\n\n```tesseract\n::back(queue)\n```'),
+            'isEmpty': new vscode.MarkdownString('**IsEmpty Function**\n\nChecks if a collection is empty.\n\n```tesseract\n::isEmpty(collection)\n```'),
+            'qsize': new vscode.MarkdownString('**Queue Size Function**\n\nReturns the number of elements in a queue.\n\n```tesseract\n::qsize(queue)\n```')
+        };
+
+        return functionMap[funcName] || null;
+    },
+
+    /**
+     * Get information about Tesseract types
+     * @param {string} typeName 
+     * @returns {vscode.MarkdownString | null}
+     */
+    getTypeInfo(typeName) {
+        const typeMap = {
+            'dict': new vscode.MarkdownString('**Dictionary Type**\n\nA key-value collection type.\n\n```tesseract\nlet$ myDict = dict{key1: value1, key2: value2}\n```'),
+            'stack': new vscode.MarkdownString('**Stack Type**\n\nA last-in-first-out (LIFO) collection.\n\n```tesseract\nlet$ myStack = <stack>\n```'),
+            'queue': new vscode.MarkdownString('**Queue Type**\n\nA first-in-first-out (FIFO) collection.\n\n```tesseract\nlet$ myQueue = <queue>\n```')
+        };
+
+        return typeMap[typeName] || null;
+    }
+};
+
+module.exports = hoverProvider;

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <rect x="3" y="3" width="10" height="10" rx="2" ry="2" fill="none" stroke="#4EC9B0" stroke-width="1"/>
+  <text x="8" y="11" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#4EC9B0">JSON</text>
+</svg>

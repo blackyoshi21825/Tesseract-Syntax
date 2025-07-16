@@ -1,0 +1,51 @@
+{
+  "name": "tesseract-syntax",
+  "displayName": "Tesseract Language Syntax",
+  "description": "Syntax highlighting for Tesseract programming language",
+  "version": "0.1.0",
+  "publisher": "tesseract-lang",
+  "icon": "icon.svg",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "main": "./client/src/language-server.js",
+  "activationEvents": [
+    "onLanguage:tesseract"
+  ],
+  "categories": [
+    "Programming Languages",
+    "Themes",
+    "Linters"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "tesseract",
+        "aliases": ["Tesseract", "tesseract"],
+        "extensions": [".tesseract"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "tesseract",
+        "scopeName": "source.tesseract",
+        "path": "./syntaxes/tesseract.tmLanguage.json"
+      }
+    ],
+    "themes": [
+      {
+        "label": "Tesseract Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tesseract-color-theme.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "tesseract-icons",
+        "label": "Tesseract Icons",
+        "path": "./fileicons/tesseract-icon-theme.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "iconDefinitions": {
+    "_tesseract": {
+      "iconPath": "./tesseract.svg"
+    },
+    "_c": {
+      "iconPath": "./c-file.svg"
+    },
+    "_h": {
+      "iconPath": "./h-file.svg"
+    },
+    "_svg": {
+      "iconPath": "./svg-file.svg"
+    },
+    "_md": {
+      "iconPath": "./md-file.svg"
+    },
+    "_json": {
+      "iconPath": "./json-file.svg"
+    },
+    "_makefile": {
+      "iconPath": "./makefile.svg"
+    },
+    "_folder_vscode": {
+      "iconPath": "./folder-vscode.svg"
+    },
+    "_folder_lib": {
+      "iconPath": "./folder-lib.svg"
+    },
+    "_folder_src": {
+      "iconPath": "./folder-src.svg"
+    },
+    "_folder_include": {
+      "iconPath": "./folder-include.svg"
+    },
+    "_folder_syntax": {
+      "iconPath": "./folder-syntax.svg"
+    }
+  },
+  "folderNames": {
+    ".vscode": "_folder_vscode",
+    "lib": "_folder_lib",
+    "src": "_folder_src",
+    "include": "_folder_include",
+    "tesseract-syntax": "_folder_syntax",
+    "tesseract_syntax": "_folder_syntax"
+  },
+  "fileExtensions": {
+    "tesseract": "_tesseract",
+    "c": "_c",
+    "h": "_h",
+    "svg": "_svg",
+    "md": "_md",
+    "json": "_json",
+    "mk": "_makefile"
+  },
+  "fileNames": {
+    "makefile": "_makefile",
+    "Makefile": "_makefile"
+  },
+  "languageIds": {
+    "tesseract": "_tesseract",
+    "c": "_c",
+    "h": "_h",
+    "svg": "_svg",
+    "markdown": "_md",
+    "json": "_json"
+  },
+  "folder": "_folder",
+  "folderExpanded": "_folder"
+}

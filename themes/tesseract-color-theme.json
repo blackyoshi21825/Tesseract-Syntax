@@ -1,0 +1,160 @@
+{
+    "name": "Tesseract Theme",
+    "type": "dark",
+    "colors": {
+        "editor.background": "#1E1E1E",
+        "editor.foreground": "#D4D4D4"
+    },
+    "tokenColors": [
+        {
+            "scope": "comment.line.number-sign.tesseract",
+            "settings": {
+                "foreground": "#6A9955"
+            }
+        },
+        {
+            "scope": "string.quoted.double.tesseract",
+            "settings": {
+                "foreground": "#CE9178"
+            }
+        },
+        {
+            "scope": "variable.parameter.format.tesseract",
+            "settings": {
+                "foreground": "#569CD6",
+                "fontStyle": "bold"
+            }
+        },
+        {
+            "scope": "keyword.control.tesseract",
+            "settings": {
+                "foreground": "#569CD6"
+            }
+        },
+        {
+            "scope": "storage.type.tesseract",
+            "settings": {
+                "foreground": "#569CD6"
+            }
+        },
+        {
+            "scope": "keyword.operator.logical.tesseract",
+            "settings": {
+                "foreground": "#569CD6"
+            }
+        },
+        {
+            "scope": "entity.name.function.tesseract",
+            "settings": {
+                "foreground": "#DCDCAA"
+            }
+        },
+        {
+            "scope": "support.function.builtin.tesseract",
+            "settings": {
+                "foreground": "#4EC9B0"
+            }
+        },
+        {
+            "scope": "variable.other.tesseract",
+            "settings": {
+                "foreground": "#9CDCFE"
+            }
+        },
+        {
+            "scope": "keyword.operator.tesseract",
+            "settings": {
+                "foreground": "#D4D4D4"
+            }
+        },
+        {
+            "scope": "constant.numeric.tesseract",
+            "settings": {
+                "foreground": "#B5CEA8"
+            }
+        },
+        {
+            "scope": "support.type.tesseract",
+            "settings": {
+                "foreground": "#4EC9B0"
+            }
+        },
+        {
+            "scope": "support.type.advanced.tesseract",
+            "settings": {
+                "foreground": "#C586C0",
+                "fontStyle": "bold"
+            }
+        },
+        {
+            "scope": "variable.language.tesseract",
+            "settings": {
+                "foreground": "#569CD6",
+                "fontStyle": "italic"
+            }
+        },
+        {
+            "scope": "punctuation.definition.bracket.curly.tesseract",
+            "settings": {
+                "foreground": "#D4D4D4"
+            }
+        },
+        {
+            "scope": "punctuation.definition.bracket.square.tesseract",
+            "settings": {
+                "foreground": "#D4D4D4"
+            }
+        },
+        {
+            "scope": "punctuation.definition.bracket.round.tesseract",
+            "settings": {
+                "foreground": "#D4D4D4"
+            }
+        },
+        {
+            "scope": "punctuation.separator.tesseract",
+            "settings": {
+                "foreground": "#D4D4D4"
+            }
+        },
+        {
+            "scope": "variable.parameter.tesseract",
+            "settings": {
+                "foreground": "#9CDCFE",
+                "fontStyle": "italic"
+            }
+        },
+        {
+            "scope": "constant.character.escape.tesseract",
+            "settings": {
+                "foreground": "#D7BA7D"
+            }
+        },
+        {
+            "scope": "string.quoted.double.import.tesseract",
+            "settings": {
+                "foreground": "#CE9178",
+                "fontStyle": "italic"
+            }
+        },
+        {
+            "scope": "variable.other.property.tesseract",
+            "settings": {
+                "foreground": "#4FC1FF"
+            }
+        },
+        {
+            "scope": "constant.language.tesseract",
+            "settings": {
+                "foreground": "#569CD6",
+                "fontStyle": "bold"
+            }
+        },
+        {
+            "scope": "meta.structure.dictionary.tesseract",
+            "settings": {
+                "foreground": "#CCCCCC"
+            }
+        }
+    ]
+}

@@ -1,0 +1,169 @@
+{
+    "name": "Tesseract",
+    "scopeName": "source.tesseract",
+    "patterns": [
+        { "include": "#comments" },
+        { "include": "#strings" },
+        { "include": "#keywords" },
+        { "include": "#functions" },
+        {
+            "match": "(<)(stack|queue)(>)",
+            "captures": {
+                "1": { "name": "punctuation.definition.tag.tesseract" },
+                "2": { "name": "support.type.advanced.tesseract" },
+                "3": { "name": "punctuation.definition.tag.tesseract" }
+            }
+        },
+        { "include": "#operators" },
+        { "include": "#variables" },
+        { "include": "#numbers" },
+        { "include": "#builtins" },
+        { "include": "#brackets" },
+        { "include": "#special_chars" },
+        { "include": "#parameters" },
+        { "include": "#imports" },
+        { "include": "#member_access" },
+        { "include": "#data_structures" }
+    ],
+    "repository": {
+        "comments": {
+            "name": "comment.line.number-sign.tesseract",
+            "match": "#.*$"
+        },
+        "strings": {
+            "name": "string.quoted.double.tesseract",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.tesseract",
+                    "match": "\\\\."
+                },
+                {
+                    "name": "variable.parameter.format.tesseract",
+                    "match": "@[sdf]"
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.tesseract",
+                    "match": "\\b(if|else|elseif|loop|import)\\$\\b"
+                },
+                {
+                    "name": "storage.type.tesseract",
+                    "match": "\\b(let|func|class)\\$\\b"
+                },
+                {
+                    "name": "keyword.operator.logical.tesseract",
+                    "match": "\\b(and|or|not|true|false)\\b"
+                }
+            ]
+        },
+        "functions": {
+            "patterns": [
+                {
+                    "name": "entity.name.function.tesseract",
+                    "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\("
+                },
+                {
+                    "name": "support.function.builtin.tesseract",
+                    "match": "::(print|len|append|prepend|pop|insert|remove|pattern_match|get|set|keys|values|push|peek|size|empty|enqueue|dequeue|front|back|isEmpty|qsize)\\b"
+                }
+            ]
+        },
+        "variables": {
+            "name": "variable.other.tesseract",
+            "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b"
+        },
+        "operators": {
+            "name": "keyword.operator.tesseract",
+            "match": "(?<!<queue|<stack)(\\:|\\=|\\+|\\-|\\*|\\/|\\%|\\<\\=|\\>\\=|\\<|\\>|\\!\\=|\\=\\=|\\!|\\&|\\||\\^|\\~|\\=\\>)"
+        },
+        "numbers": {
+            "name": "constant.numeric.tesseract",
+            "match": "\\b[0-9]+(\\.[0-9]+)?\\b"
+        },
+        "builtins": {
+            "patterns": [
+                {
+                    "name": "support.type.tesseract",
+                    "match": "\\bdict\\b"
+                },
+                {
+                    "name": "support.type.advanced.tesseract",
+                    "match": "<stack>|<queue>"
+                },
+                {
+                    "name": "variable.language.tesseract",
+                    "match": "\\bself\\b"
+                }
+            ]
+        },
+        "special_types": {
+            "patterns": [
+                {
+                    "name": "support.type.advanced.tesseract",
+                    "match": "<(stack|queue)>",
+                    "captures": {
+                        "0": { "name": "support.type.advanced.tesseract" },
+                        "1": { "name": "support.type.advanced.tesseract" }
+                    }
+                }
+            ]
+        },
+        "brackets": {
+            "patterns": [
+                {
+                    "name": "punctuation.definition.bracket.curly.tesseract",
+                    "match": "[{}]"
+                },
+                {
+                    "name": "punctuation.definition.bracket.square.tesseract",
+                    "match": "[\\[\\]]"
+                },
+                {
+                    "name": "punctuation.definition.bracket.round.tesseract",
+                    "match": "[()]"
+                }
+            ]
+        },
+        "special_chars": {
+            "name": "punctuation.separator.tesseract",
+            "match": "[;,.]"
+        },
+        "parameters": {
+            "patterns": [
+                {
+                    "name": "variable.parameter.tesseract",
+                    "match": "(?<=\\()\\s*[a-zA-Z_][a-zA-Z0-9_]*\\s*(?=[,)])"
+                }
+            ]
+        },
+        "imports": {
+            "name": "string.quoted.double.import.tesseract",
+            "match": "(?<=import\\$\\s*\").*?(?=\")"
+        },
+        "member_access": {
+            "name": "variable.other.property.tesseract",
+            "match": "(?<=\\.)\\s*[a-zA-Z_][a-zA-Z0-9_]*\\b"
+        },
+        "data_structures": {
+            "patterns": [
+                {
+                    "name": "constant.language.tesseract",
+                    "match": "\\b(true|false)\\b"
+                },
+                {
+                    "name": "meta.structure.dictionary.tesseract",
+                    "begin": "dict\\{",
+                    "end": "\\}",
+                    "patterns": [
+                        { "include": "$self" }
+                    ]
+                }
+            ]
+        }
+    }
+}
