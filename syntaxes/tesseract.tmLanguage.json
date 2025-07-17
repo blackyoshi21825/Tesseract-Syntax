@@ -2,28 +2,62 @@
     "name": "Tesseract",
     "scopeName": "source.tesseract",
     "patterns": [
-        { "include": "#comments" },
-        { "include": "#strings" },
-        { "include": "#keywords" },
-        { "include": "#functions" },
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#functions"
+        },
         {
             "match": "(<)(stack|queue|linkedlist)(>)",
             "captures": {
-                "1": { "name": "punctuation.definition.tag.tesseract" },
-                "2": { "name": "support.type.advanced.tesseract" },
-                "3": { "name": "punctuation.definition.tag.tesseract" }
+                "1": {
+                    "name": "punctuation.definition.tag.tesseract"
+                },
+                "2": {
+                    "name": "support.type.advanced.tesseract"
+                },
+                "3": {
+                    "name": "punctuation.definition.tag.tesseract"
+                }
             }
         },
-        { "include": "#operators" },
-        { "include": "#variables" },
-        { "include": "#numbers" },
-        { "include": "#builtins" },
-        { "include": "#brackets" },
-        { "include": "#special_chars" },
-        { "include": "#parameters" },
-        { "include": "#imports" },
-        { "include": "#member_access" },
-        { "include": "#data_structures" }
+        {
+            "include": "#operators"
+        },
+        {
+            "include": "#variables"
+        },
+        {
+            "include": "#numbers"
+        },
+        {
+            "include": "#builtins"
+        },
+        {
+            "include": "#brackets"
+        },
+        {
+            "include": "#special_chars"
+        },
+        {
+            "include": "#parameters"
+        },
+        {
+            "include": "#imports"
+        },
+        {
+            "include": "#member_access"
+        },
+        {
+            "include": "#data_structures"
+        }
     ],
     "repository": {
         "comments": {
@@ -93,7 +127,7 @@
                 },
                 {
                     "name": "support.type.advanced.tesseract",
-                    "match": "<stack>|<queue>|<linkedlist>"
+                    "match": "<stack>|<queue>|<linked>"
                 },
                 {
                     "name": "variable.language.tesseract",
@@ -107,8 +141,12 @@
                     "name": "support.type.advanced.tesseract",
                     "match": "<(stack|queue|linkedlist)>",
                     "captures": {
-                        "0": { "name": "support.type.advanced.tesseract" },
-                        "1": { "name": "support.type.advanced.tesseract" }
+                        "0": {
+                            "name": "support.type.advanced.tesseract"
+                        },
+                        "1": {
+                            "name": "support.type.advanced.tesseract"
+                        }
                     }
                 }
             ]
@@ -160,7 +198,9 @@
                     "begin": "dict\\{",
                     "end": "\\}",
                     "patterns": [
-                        { "include": "$self" }
+                        {
+                            "include": "$self"
+                        }
                     ]
                 }
             ]
