@@ -14,7 +14,7 @@ const completionProvider = {
      */
     provideCompletionItems(document, position, token, context) {
         const linePrefix = document.lineAt(position).text.substring(0, position.character);
-        
+
         // Keywords
         const keywords = [
             { label: 'if$', kind: vscode.CompletionItemKind.Keyword, detail: 'Conditional statement' },
@@ -69,7 +69,7 @@ const completionProvider = {
             { label: 'dict', kind: vscode.CompletionItemKind.Class, detail: 'Dictionary type' },
             { label: '<stack>', kind: vscode.CompletionItemKind.Class, detail: 'Stack type' },
             { label: '<queue>', kind: vscode.CompletionItemKind.Class, detail: 'Queue type' },
-            { label: '<linkedlist>', kind: vscode.CompletionItemKind.Class, detail: 'Linked list type' }
+            { label: '<linked>', kind: vscode.CompletionItemKind.Class, detail: 'Linked list type' }
         ];
 
         // Check for built-in function context (after ::)
