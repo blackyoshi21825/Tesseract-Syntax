@@ -55,14 +55,21 @@ const completionProvider = {
             { label: 'front', kind: vscode.CompletionItemKind.Function, detail: 'Get front of queue' },
             { label: 'back', kind: vscode.CompletionItemKind.Function, detail: 'Get back of queue' },
             { label: 'isEmpty', kind: vscode.CompletionItemKind.Function, detail: 'Check if empty' },
-            { label: 'qsize', kind: vscode.CompletionItemKind.Function, detail: 'Get queue size' }
+            { label: 'qsize', kind: vscode.CompletionItemKind.Function, detail: 'Get queue size' },
+            { label: 'addNode', kind: vscode.CompletionItemKind.Function, detail: 'Add node to linked list' },
+            { label: 'removeNode', kind: vscode.CompletionItemKind.Function, detail: 'Remove node from linked list' },
+            { label: 'find', kind: vscode.CompletionItemKind.Function, detail: 'Find node in linked list' },
+            { label: 'head', kind: vscode.CompletionItemKind.Function, detail: 'Get first node of linked list' },
+            { label: 'tail', kind: vscode.CompletionItemKind.Function, detail: 'Get last node of linked list' },
+            { label: 'lsize', kind: vscode.CompletionItemKind.Function, detail: 'Get linked list size' }
         ];
 
         // Types
         const types = [
             { label: 'dict', kind: vscode.CompletionItemKind.Class, detail: 'Dictionary type' },
             { label: '<stack>', kind: vscode.CompletionItemKind.Class, detail: 'Stack type' },
-            { label: '<queue>', kind: vscode.CompletionItemKind.Class, detail: 'Queue type' }
+            { label: '<queue>', kind: vscode.CompletionItemKind.Class, detail: 'Queue type' },
+            { label: '<linkedlist>', kind: vscode.CompletionItemKind.Class, detail: 'Linked list type' }
         ];
 
         // Check for built-in function context (after ::)
