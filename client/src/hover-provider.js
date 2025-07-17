@@ -18,7 +18,7 @@ const hoverProvider = {
         }
 
         const word = document.getText(wordRange);
-        
+
         // Check for keywords
         const keywordInfo = this.getKeywordInfo(word);
         if (keywordInfo) {
@@ -101,7 +101,13 @@ const hoverProvider = {
             'front': new vscode.MarkdownString('**Front Function**\n\nReturns the first element of a queue without removing it.\n\n```tesseract\n::front(queue)\n```'),
             'back': new vscode.MarkdownString('**Back Function**\n\nReturns the last element of a queue without removing it.\n\n```tesseract\n::back(queue)\n```'),
             'isEmpty': new vscode.MarkdownString('**IsEmpty Function**\n\nChecks if a collection is empty.\n\n```tesseract\n::isEmpty(collection)\n```'),
-            'qsize': new vscode.MarkdownString('**Queue Size Function**\n\nReturns the number of elements in a queue.\n\n```tesseract\n::qsize(queue)\n```')
+            'qsize': new vscode.MarkdownString('**Queue Size Function**\n\nReturns the number of elements in a queue.\n\n```tesseract\n::qsize(queue)\n```'),
+            'addNode': new vscode.MarkdownString('**Add Node Function**\n\nAdds a new node to a linked list.\n\n```tesseract\n::addNode(linkedlist, value)\n```'),
+            'removeNode': new vscode.MarkdownString('**Remove Node Function**\n\nRemoves a node with the specified value from a linked list.\n\n```tesseract\n::removeNode(linkedlist, value)\n```'),
+            'find': new vscode.MarkdownString('**Find Function**\n\nFinds a node with the specified value in a linked list.\n\n```tesseract\n::find(linkedlist, value)\n```'),
+            'head': new vscode.MarkdownString('**Head Function**\n\nReturns the first node of a linked list.\n\n```tesseract\n::head(linkedlist)\n```'),
+            'tail': new vscode.MarkdownString('**Tail Function**\n\nReturns the last node of a linked list.\n\n```tesseract\n::tail(linkedlist)\n```'),
+            'lsize': new vscode.MarkdownString('**Linked List Size Function**\n\nReturns the number of nodes in a linked list.\n\n```tesseract\n::lsize(linkedlist)\n```')
         };
 
         return functionMap[funcName] || null;
@@ -116,7 +122,8 @@ const hoverProvider = {
         const typeMap = {
             'dict': new vscode.MarkdownString('**Dictionary Type**\n\nA key-value collection type.\n\n```tesseract\nlet$ myDict = dict{key1: value1, key2: value2}\n```'),
             'stack': new vscode.MarkdownString('**Stack Type**\n\nA last-in-first-out (LIFO) collection.\n\n```tesseract\nlet$ myStack = <stack>\n```'),
-            'queue': new vscode.MarkdownString('**Queue Type**\n\nA first-in-first-out (FIFO) collection.\n\n```tesseract\nlet$ myQueue = <queue>\n```')
+            'queue': new vscode.MarkdownString('**Queue Type**\n\nA first-in-first-out (FIFO) collection.\n\n```tesseract\nlet$ myQueue = <queue>\n```'),
+            'linkedlist': new vscode.MarkdownString('**Linked List Type**\n\nA linear collection of elements where each element points to the next.\n\n```tesseract\nlet$ myList = <linked>\n```')
         };
 
         return typeMap[typeName] || null;
