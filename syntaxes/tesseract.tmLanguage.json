@@ -7,7 +7,7 @@
         { "include": "#keywords" },
         { "include": "#functions" },
         {
-            "match": "(<)(stack|queue)(>)",
+            "match": "(<)(stack|queue|linkedlist)(>)",
             "captures": {
                 "1": { "name": "punctuation.definition.tag.tesseract" },
                 "2": { "name": "support.type.advanced.tesseract" },
@@ -93,7 +93,7 @@
                 },
                 {
                     "name": "support.type.advanced.tesseract",
-                    "match": "<stack>|<queue>"
+                    "match": "<stack>|<queue>|<linkedlist>"
                 },
                 {
                     "name": "variable.language.tesseract",
@@ -105,7 +105,7 @@
             "patterns": [
                 {
                     "name": "support.type.advanced.tesseract",
-                    "match": "<(stack|queue)>",
+                    "match": "<(stack|queue|linkedlist)>",
                     "captures": {
                         "0": { "name": "support.type.advanced.tesseract" },
                         "1": { "name": "support.type.advanced.tesseract" }
