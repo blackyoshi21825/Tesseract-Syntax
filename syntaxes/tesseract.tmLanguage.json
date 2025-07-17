@@ -15,7 +15,7 @@
             "include": "#functions"
         },
         {
-            "match": "(<)(stack|queue|linkedlist)(>)",
+            "match": "(<)(stack|queue|linked)(>)",
             "captures": {
                 "1": {
                     "name": "punctuation.definition.tag.tesseract"
@@ -139,7 +139,7 @@
             "patterns": [
                 {
                     "name": "support.type.advanced.tesseract",
-                    "match": "<(stack|queue|linkedlist)>",
+                    "match": "<(stack|queue|linked)>",
                     "captures": {
                         "0": {
                             "name": "support.type.advanced.tesseract"
