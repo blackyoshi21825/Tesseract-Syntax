@@ -107,7 +107,8 @@ const hoverProvider = {
             'find': new vscode.MarkdownString('**Find Function**\n\nFinds a node with the specified value in a linked list.\n\n```tesseract\n::find(linkedlist, value)\n```'),
             'head': new vscode.MarkdownString('**Head Function**\n\nReturns the first node of a linked list.\n\n```tesseract\n::head(linkedlist)\n```'),
             'tail': new vscode.MarkdownString('**Tail Function**\n\nReturns the last node of a linked list.\n\n```tesseract\n::tail(linkedlist)\n```'),
-            'lsize': new vscode.MarkdownString('**Linked List Size Function**\n\nReturns the number of nodes in a linked list.\n\n```tesseract\n::lsize(linkedlist)\n```')
+            'lsize': new vscode.MarkdownString('**Linked List Size Function**\n\nReturns the number of nodes in a linked list.\n\n```tesseract\n::lsize(linkedlist)\n```'),
+            'input': new vscode.MarkdownString('**Input Function**\n\nGets user input from the console.\n\n```tesseract\n::input(prompt)\n```')
         };
 
         return functionMap[funcName] || null;

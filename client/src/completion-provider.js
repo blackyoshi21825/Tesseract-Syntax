@@ -61,7 +61,8 @@ const completionProvider = {
             { label: 'find', kind: vscode.CompletionItemKind.Function, detail: 'Find node in linked list' },
             { label: 'head', kind: vscode.CompletionItemKind.Function, detail: 'Get first node of linked list' },
             { label: 'tail', kind: vscode.CompletionItemKind.Function, detail: 'Get last node of linked list' },
-            { label: 'lsize', kind: vscode.CompletionItemKind.Function, detail: 'Get linked list size' }
+            { label: 'lsize', kind: vscode.CompletionItemKind.Function, detail: 'Get linked list size' },
+            { label: 'input', kind: vscode.CompletionItemKind.Function, detail: 'Get user input' }
         ];
 
         // Types
