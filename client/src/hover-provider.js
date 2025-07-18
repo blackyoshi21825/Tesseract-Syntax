@@ -110,9 +110,13 @@ const hoverProvider = {
             'lsize': new vscode.MarkdownString('**Linked List Size Function**\n\nReturns the number of nodes in a linked list.\n\n```tesseract\n::lsize(linkedlist)\n```'),
             'input': new vscode.MarkdownString('**Input Function**\n\nGets user input from the console.\n\n```tesseract\n::input(prompt)\n```'),
             'fopen': new vscode.MarkdownString('**File Open Function**\n\nOpens a .txt file.\n\n```::fopen(filename, mode)\n```'),
-            'fread': new vscode.MarkdownString('**File Read Function**\n\nRead from a .txt file\n\n```::fread(filename)\n```'),
-            'fwrite': new vscode.MarkdownString('**File Open Function**\n\Writes from a ,txt file\n\n```::fwrite(filename, content)\n```'),
-            'fclose': new vscode.MarkdownString('**File Open Function**\n\nCloses a .txt file.\n\n```::fclose(filename)\n```')
+            'fread': new vscode.MarkdownString('**File Read Function**\n\nRead from a .txt file.\n\n```::fread(filename)\n```'),
+            'fwrite': new vscode.MarkdownString('**File Write Function**\n\Writes from a .txt file.\n\n```::fwrite(filename, content)\n```'),
+            'fclose': new vscode.MarkdownString('**File Close Function**\n\nCloses a .txt file.\n\n```::fclose(filename)\n```'),
+            'ladd': new vscode.MarkdownString('**Linked Lisk Add Function**\n\nAdd value to the list.\n\n```::fopen(filename, mode)\n```'),
+            'lremove': new vscode.MarkdownString('**Linked List Remove Function**\n\nRemove first occurrence of value.\n\n```::lremove(list, value\n```'),
+            'lget': new vscode.MarkdownString('**Linked List Get Function**\n\Get element at index\n\n```::lget(list, index)\n```'),
+            'lisEmpty': new vscode.MarkdownString('**Linked List Empty Function**\n\n\Check if list is empty (returns 1 for empty, 0 for non-empty)\n\n```::lisEmpty(list)\n```'),
         };
 
         return functionMap[funcName] || null;
