@@ -62,7 +62,10 @@ const completionProvider = {
             { label: 'head', kind: vscode.CompletionItemKind.Function, detail: 'Get first node of linked list' },
             { label: 'tail', kind: vscode.CompletionItemKind.Function, detail: 'Get last node of linked list' },
             { label: 'lsize', kind: vscode.CompletionItemKind.Function, detail: 'Get linked list size' },
-            { label: 'input', kind: vscode.CompletionItemKind.Function, detail: 'Get user input' }
+            { label: 'fopen', kind: vscode.CompletionItemKind.Function, detail: 'Open a file' },
+            { label: 'fread', kind: vscode.CompletionItemKind.Function, detail: 'Read from a file' },
+            { label: 'fwrite', kind: vscode.CompletionItemKind.Function, detail: 'Write to a file' },
+            { label: 'fclose', kind: vscode.CompletionItemKind.Function, detail: 'Close a file' }
         ];
 
         // Types
