@@ -51,6 +51,7 @@ const hoverProvider = {
             'else$': new vscode.MarkdownString('**Else Clause**\n\nUsed with if$ for alternative execution path.\n\n```tesseract\nif$ condition {\n    # code\n} else$ {\n    # alternative code\n}\n```'),
             'elseif$': new vscode.MarkdownString('**Else If Clause**\n\nUsed for multiple conditional branches.\n\n```tesseract\nif$ condition1 {\n    # code\n} elseif$ condition2 {\n    # alternative code\n}\n```'),
             'loop$': new vscode.MarkdownString('**Loop Statement**\n\nUsed for iterative execution.\n\n```tesseract\nloop$ condition {\n    # code\n}\n```'),
+            'while$': new vscode.MarkdownString('**Loop Statement**\n\nUsed for conditional execution.\n\n```tesseract\nwhile$ condition {\n    # code\n}\n```'),
             'import$': new vscode.MarkdownString('**Import Statement**\n\nUsed to import modules.\n\n```tesseract\nimport$ "module_name"\n```'),
             'let$': new vscode.MarkdownString('**Variable Declaration**\n\nUsed to declare variables.\n\n```tesseract\nlet$ variable_name = value\n```'),
             'func$': new vscode.MarkdownString('**Function Declaration**\n\nUsed to declare functions.\n\n```tesseract\nfunc$ function_name(param1, param2) {\n    # code\n}\n```'),

@@ -21,6 +21,7 @@ const completionProvider = {
             { label: 'else$', kind: vscode.CompletionItemKind.Keyword, detail: 'Else clause' },
             { label: 'elseif$', kind: vscode.CompletionItemKind.Keyword, detail: 'Else if clause' },
             { label: 'loop$', kind: vscode.CompletionItemKind.Keyword, detail: 'Loop statement' },
+            { label: 'while$', kind: vscode.CompletionItemKind.Keyword, detail: 'While statement' },
             { label: 'import$', kind: vscode.CompletionItemKind.Keyword, detail: 'Import statement' },
             { label: 'let$', kind: vscode.CompletionItemKind.Keyword, detail: 'Variable declaration' },
             { label: 'func$', kind: vscode.CompletionItemKind.Keyword, detail: 'Function declaration' },
