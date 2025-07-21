@@ -118,6 +118,8 @@ const hoverProvider = {
             'lremove': new vscode.MarkdownString('**Linked List Remove Function**\n\nRemove first occurrence of value.\n\n```::lremove(list, value\n```'),
             'lget': new vscode.MarkdownString('**Linked List Get Function**\n\Get element at index\n\n```::lget(list, index)\n```'),
             'lisEmpty': new vscode.MarkdownString('**Linked List Empty Function**\n\n\Check if list is empty (returns 1 for empty, 0 for non-empty)\n\n```::lisEmpty(list)\n```'),
+            'to_str': new vscode.MarkdownString('**Int to Str Function**\n\Convert an integer to a string\n\n```::to_str(integer)\n```'),
+            'to_int': new vscode.MarkdownString('**Str to Int Function**\n\Convert a string to an integer\n\n```::to_int(string)\n```'),
         };
 
         return functionMap[funcName] || null;

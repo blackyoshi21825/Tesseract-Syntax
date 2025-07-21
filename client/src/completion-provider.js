@@ -71,7 +71,9 @@ const completionProvider = {
             { label: 'fopen', kind: vscode.CompletionItemKind.Function, detail: 'Open a file' },
             { label: 'fread', kind: vscode.CompletionItemKind.Function, detail: 'Read from a file' },
             { label: 'fwrite', kind: vscode.CompletionItemKind.Function, detail: 'Write to a file' },
-            { label: 'fclose', kind: vscode.CompletionItemKind.Function, detail: 'Close a file' }
+            { label: 'fclose', kind: vscode.CompletionItemKind.Function, detail: 'Close a file' },
+            { label: 'to_str', kind: vscode.CompletionItemKind.Function, detail: 'Int to Str' },
+            { label: 'to_int', kind: vscode.CompletionItemKind.Function, detail: 'Str to Int' }
         ];
 
         // Types
