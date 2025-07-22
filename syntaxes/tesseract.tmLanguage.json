@@ -103,7 +103,7 @@
                 },
                 {
                     "name": "support.function.builtin.tesseract",
-                    "match": "::(print|len|append|prepend|pop|insert|remove|pattern_match|get|set|keys|values|push|peek|size|empty|enqueue|dequeue|front|back|isEmpty|qsize|addNode|removeNode|find|head|tail|lsize)\\b"
+                    "match": "::(print|len|append|prepend|pop|insert|remove|pattern_match|get|set|keys|values|push|peek|size|empty|enqueue|dequeue|front|back|isEmpty|qsize|addNode|removeNode|find|head|tail|lsize|http_get|http_post|http_put|http_delete|fopen|fread|fwrite|fclose|to_str|to_int)\\b"
                 }
             ]
         },

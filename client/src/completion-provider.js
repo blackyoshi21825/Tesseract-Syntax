@@ -73,7 +73,11 @@ const completionProvider = {
             { label: 'fwrite', kind: vscode.CompletionItemKind.Function, detail: 'Write to a file' },
             { label: 'fclose', kind: vscode.CompletionItemKind.Function, detail: 'Close a file' },
             { label: 'to_str', kind: vscode.CompletionItemKind.Function, detail: 'Int to Str' },
-            { label: 'to_int', kind: vscode.CompletionItemKind.Function, detail: 'Str to Int' }
+            { label: 'to_int', kind: vscode.CompletionItemKind.Function, detail: 'Str to Int' },
+            { label: 'http_get', kind: vscode.CompletionItemKind.Function, detail: 'Make HTTP GET request' },
+            { label: 'http_post', kind: vscode.CompletionItemKind.Function, detail: 'Make HTTP POST request' },
+            { label: 'http_put', kind: vscode.CompletionItemKind.Function, detail: 'Make HTTP PUT request' },
+            { label: 'http_delete', kind: vscode.CompletionItemKind.Function, detail: 'Make HTTP DELETE request' },
         ];
 
         // Types

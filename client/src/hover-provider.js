@@ -120,6 +120,10 @@ const hoverProvider = {
             'lisEmpty': new vscode.MarkdownString('**Linked List Empty Function**\n\n\Check if list is empty (returns 1 for empty, 0 for non-empty)\n\n```::lisEmpty(list)\n```'),
             'to_str': new vscode.MarkdownString('**Int to Str Function**\n\Convert an integer to a string\n\n```::to_str(integer)\n```'),
             'to_int': new vscode.MarkdownString('**Str to Int Function**\n\Convert a string to an integer\n\n```::to_int(string)\n```'),
+            'http_get': new vscode.MarkdownString('**HTTP GET Function**\n\nMakes an HTTP GET request to a URL.\n\n```tesseract\n::http_get(url, [headers])\n```'),
+            'http_post': new vscode.MarkdownString('**HTTP POST Function**\n\nMakes an HTTP POST request to a URL with data.\n\n```tesseract\n::http_post(url, data, [headers])\n```'),
+            'http_put': new vscode.MarkdownString('**HTTP PUT Function**\n\nMakes an HTTP PUT request to a URL with data.\n\n```tesseract\n::http_put(url, data, [headers])\n```'),
+            'http_delete': new vscode.MarkdownString('**HTTP DELETE Function**\n\nMakes an HTTP DELETE request to a URL.\n\n```tesseract\n::http_delete(url, [headers])\n```'),
         };
 
         return functionMap[funcName] || null;
