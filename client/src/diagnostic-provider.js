@@ -769,6 +769,12 @@ class TesseractDiagnosticProvider {
 
             // Process the line to exclude string literals
             const processedLine = this.removeStringLiterals(line);
+            
+            // Check if the line actually ends with a semicolon (after removing comments)
+            const lineWithoutComments = processedLine.split('#')[0].trim();
+            if (lineWithoutComments.endsWith(';')) {
+                continue;
+            }
 
             // Check for variable declarations, assignments, and function calls
             if (processedLine.includes('=') ||
@@ -809,7 +815,7 @@ class TesseractDiagnosticProvider {
             'lget', 'lisEmpty'
         ];
 
-        return keywords.includes(word) || builtins.includes(word);
+        return keywords.includes(word) || builtinFunctions.includes(word);
     }
 }
 
