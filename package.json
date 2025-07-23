@@ -1,7 +1,7 @@
 {
   "name": "tesseract-syntax",
   "displayName": "Tesseract Language Syntax",
-  "description": "Syntax highlighting for Tesseract programming language",
+  "description": "Syntax highlighting and diagnostic features for Tesseract programming language",
   "version": "0.1.0",
   "publisher": "tesseract-lang",
   "icon": "icon.svg",

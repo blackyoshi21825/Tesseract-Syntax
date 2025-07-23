@@ -1,8 +1,10 @@
 # Tesseract Language Syntax Highlighting
 
-This extension provides syntax highlighting for the Tesseract programming language.
+This extension provides syntax highlighting and diagnostic features for the Tesseract programming language.
 
 ## Features
+
+### Syntax Highlighting
 
 Syntax highlighting for:
 - Keywords (let$, func$, class$, if$, etc.) - blue
@@ -62,6 +64,42 @@ To create a shareable extension:
 2. Install vsce: `npm install -g vsce`
 3. Run `vsce package` in this directory
 4. Install the generated .vsix file in VS Code
+
+### Diagnostic Features
+
+The extension provides real-time error detection for:
+
+- **Syntax Errors**
+  - Missing $ in keywords (if$, else$, func$, etc.)
+  - Unclosed brackets, braces, and parentheses
+  - Unclosed string literals
+  - Missing semicolons at the end of statements
+
+- **Semantic Warnings**
+  - Undefined variables
+  - Built-in functions used without :: prefix
+
+- **Data Structure Validation**
+  - Malformed advanced data types (<stack>, <queue>, <linked>)
+  - Invalid data type names
+  - Malformed dictionary declarations
+
+- **Code Structure Validation**
+  - Incomplete control structures (if$, else$, loop$, etc. without body)
+  - Incomplete function definitions
+  - Incomplete class definitions
+
+### IntelliSense Features
+
+- **Code Completion**
+  - Keywords and language constructs
+  - Built-in functions
+  - Data types
+
+- **Hover Information**
+  - Documentation for keywords
+  - Documentation for built-in functions
+  - Documentation for data types
 
 ## Color Theme
 

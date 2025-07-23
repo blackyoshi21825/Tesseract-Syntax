@@ -9,7 +9,7 @@
 
 2. Restart Visual Studio Code
 
-3. The extension should now be active. Files with the `.tesseract` extension will automatically use the syntax highlighting.
+3. The extension should now be active. Files with the `.tesseract` extension will automatically use the syntax highlighting and diagnostic features.
 
 4. To use the Tesseract color theme:
    - Open VS Code settings (Ctrl+,)
