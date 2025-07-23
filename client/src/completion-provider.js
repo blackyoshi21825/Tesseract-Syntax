@@ -18,7 +18,7 @@ const completionProvider = {
         // Keywords
         const keywords = [
             { label: 'if$', kind: vscode.CompletionItemKind.Keyword, detail: 'Conditional statement' },
-            { label: 'else$', kind: vscode.CompletionItemKind.Keyword, detail: 'Else clause' },
+            { label: 'else', kind: vscode.CompletionItemKind.Keyword, detail: 'Else clause' },
             { label: 'elseif$', kind: vscode.CompletionItemKind.Keyword, detail: 'Else if clause' },
             { label: 'loop$', kind: vscode.CompletionItemKind.Keyword, detail: 'Loop statement' },
             { label: 'while$', kind: vscode.CompletionItemKind.Keyword, detail: 'While statement' },

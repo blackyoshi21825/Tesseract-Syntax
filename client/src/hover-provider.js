@@ -48,7 +48,7 @@ const hoverProvider = {
     getKeywordInfo(keyword) {
         const keywordMap = {
             'if$': new vscode.MarkdownString('**Conditional Statement**\n\nUsed for conditional execution of code.\n\n```tesseract\nif$ condition {\n    # code\n}\n```'),
-            'else$': new vscode.MarkdownString('**Else Clause**\n\nUsed with if$ for alternative execution path.\n\n```tesseract\nif$ condition {\n    # code\n} else$ {\n    # alternative code\n}\n```'),
+            'else': new vscode.MarkdownString('**Else Clause**\n\nUsed with if$ for alternative execution path.\n\n```tesseract\nif$ condition {\n    # code\n} else {\n    # alternative code\n}\n```'),
             'elseif$': new vscode.MarkdownString('**Else If Clause**\n\nUsed for multiple conditional branches.\n\n```tesseract\nif$ condition1 {\n    # code\n} elseif$ condition2 {\n    # alternative code\n}\n```'),
             'loop$': new vscode.MarkdownString('**Loop Statement**\n\nUsed for iterative execution.\n\n```tesseract\nloop$ condition {\n    # code\n}\n```'),
             'while$': new vscode.MarkdownString('**Loop Statement**\n\nUsed for conditional execution.\n\n```tesseract\nwhile$ condition {\n    # code\n}\n```'),

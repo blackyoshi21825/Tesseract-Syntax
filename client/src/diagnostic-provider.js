@@ -122,7 +122,7 @@ class TesseractDiagnosticProvider {
         // Process the text to exclude string literals
         const processedText = this.removeAllStringLiterals(text);
 
-        const keywordsRequiringDollar = ['if', 'else', 'elseif', 'loop', 'while', 'import', 'let', 'func', 'class'];
+        const keywordsRequiringDollar = ['if', 'elseif', 'loop', 'while', 'import', 'let', 'func', 'class']; // 'else' doesn't need a $ suffix
 
         // Regular expression to find keywords without $ suffix
         // Looks for keywords followed by space, but not by $
@@ -212,26 +212,55 @@ class TesseractDiagnosticProvider {
             'lget', 'lisEmpty'
         ];
 
-        // Look for built-in function names followed by opening parenthesis but not preceded by ::
-        const regex = new RegExp(`(?<!::)\\b(${builtinFunctions.join('|')})\\s*\\(`, 'g');
-
-        let match;
-        while ((match = regex.exec(processedText)) !== null) {
-            // Make sure it's not part of a variable name or other identifier
-            const prevChar = processedText[match.index - 1] || ' ';
-            if (/[a-zA-Z0-9_]/.test(prevChar)) {
+        // Process the text line by line
+        const lines = processedText.split('\n');
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            const originalLine = text.split('\n')[i];
+            
+            // Skip comments
+            if (line.trim().startsWith('#')) {
                 continue;
             }
+            
+            // Simple approach: directly check for each built-in function name
+            for (const funcName of builtinFunctions) {
+                // Use word boundary to ensure we're matching whole words
+                const regex = new RegExp(`\\b${funcName}\\b`, 'g');
+                
+                let match;
+                while ((match = regex.exec(line)) !== null) {
+                    // Check if this function is already properly prefixed with ::
+                    const startIndex = match.index;
+                    const prefixStart = Math.max(0, startIndex - 2);
+                    const prefix = line.substring(prefixStart, startIndex);
+                    
+                    if (prefix === '::') {
+                        continue; // Already has proper prefix
+                    }
+                    
+                    // Make sure it's not part of another word
+                    const prevChar = startIndex > 0 ? line[startIndex - 1] : ' ';
+                    if (/[a-zA-Z0-9_]/.test(prevChar)) {
+                        continue;
+                    }
+                    
+                    // Check if it's actually being used as a function
+                    // Look for opening parenthesis or string after the function name
+                    const afterFuncName = line.substring(startIndex + funcName.length).trim();
+                    if (afterFuncName.startsWith('(') || afterFuncName.startsWith('"') || afterFuncName.startsWith('\'')) {
+                        const startPos = new vscode.Position(i, startIndex);
+                        const endPos = new vscode.Position(i, startIndex + funcName.length);
+                        const range = new vscode.Range(startPos, endPos);
 
-            const startPos = document.positionAt(match.index);
-            const endPos = document.positionAt(match.index + match[1].length);
-            const range = new vscode.Range(startPos, endPos);
-
-            diagnostics.push(new vscode.Diagnostic(
-                range,
-                `Built-in function '${match[1]}' should be prefixed with :: (use '::${match[1]}')`,
-                vscode.DiagnosticSeverity.Warning
-            ));
+                        diagnostics.push(new vscode.Diagnostic(
+                            range,
+                            `Built-in function '${funcName}' should be prefixed with :: (use '::${funcName}')`,
+                            vscode.DiagnosticSeverity.Error
+                        ));
+                    }
+                }
+            }
         }
     }
 
@@ -383,7 +412,7 @@ class TesseractDiagnosticProvider {
                     diagnostics.push(new vscode.Diagnostic(
                         range,
                         `Variable '${varName}' is used but not defined`,
-                        vscode.DiagnosticSeverity.Warning
+                        vscode.DiagnosticSeverity.Error
                     ));
 
                     // Add to declared variables to avoid multiple warnings for the same variable
@@ -584,8 +613,8 @@ class TesseractDiagnosticProvider {
         // Check for if$ without body
         this.checkControlStructures(text, document, diagnostics, 'if$');
 
-        // Check for else$ without body
-        this.checkControlStructures(text, document, diagnostics, 'else$');
+        // Check for else without body (note: else doesn't need a $ suffix)
+        this.checkControlStructures(text, document, diagnostics, 'else');
 
         // Check for elseif$ without body
         this.checkControlStructures(text, document, diagnostics, 'elseif$');
@@ -743,7 +772,7 @@ class TesseractDiagnosticProvider {
             }
 
             // Skip control structures and declarations that don't need semicolons
-            if (line.startsWith('if$') || line.startsWith('else$') ||
+            if (line.startsWith('if$') || line.startsWith('else') ||
                 line.startsWith('elseif$') || line.startsWith('loop$') ||
                 line.startsWith('while$') || line.startsWith('func$') ||
                 line.startsWith('class$')) {
@@ -769,7 +798,7 @@ class TesseractDiagnosticProvider {
 
             // Process the line to exclude string literals
             const processedLine = this.removeStringLiterals(line);
-            
+
             // Check if the line actually ends with a semicolon (after removing comments)
             const lineWithoutComments = processedLine.split('#')[0].trim();
             if (lineWithoutComments.endsWith(';')) {
