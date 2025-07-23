@@ -76,8 +76,8 @@ The extension provides real-time error detection for:
   - Missing semicolons at the end of statements
 
 - **Semantic Warnings**
-  - Undefined variables
-  - Built-in functions used without :: prefix
+  - Undefined variables (ignores content inside string literals)
+  - Built-in functions used without :: prefix (ignores content inside string literals)
 
 - **Data Structure Validation**
   - Malformed advanced data types (<stack>, <queue>, <linked>)
