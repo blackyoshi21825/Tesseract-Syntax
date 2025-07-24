@@ -41,6 +41,19 @@ const hoverProvider = {
     },
 
     /**
+     * Get information about Tesseract types
+     * @param {string} type 
+     * @returns {vscode.MarkdownString | null}
+     */
+    getTypeInfo(type) {
+        const typeMap = {
+            'regex': new vscode.MarkdownString('**Regular Expression Type**\n\nUsed for pattern matching operations.\n\n```tesseract\nlet$ pattern := <regex> "pattern"//flags\n```\n\n**Flags:**\n- `i` - Case insensitive\n- `g` - Global matching')
+        };
+
+        return typeMap[type] || null;
+    },
+
+    /**
      * Get information about Tesseract keywords
      * @param {string} keyword 
      * @returns {vscode.MarkdownString | null}
@@ -108,6 +121,9 @@ const hoverProvider = {
             'find': new vscode.MarkdownString('**Find Function**\n\nFinds a node with the specified value in a linked list.\n\n```tesseract\n::find(linkedlist, value)\n```'),
             'head': new vscode.MarkdownString('**Head Function**\n\nReturns the first node of a linked list.\n\n```tesseract\n::head(linkedlist)\n```'),
             'tail': new vscode.MarkdownString('**Tail Function**\n\nReturns the last node of a linked list.\n\n```tesseract\n::tail(linkedlist)\n```'),
+            'rmatch': new vscode.MarkdownString('**Regex Match Function**\n\nTests if pattern matches text (returns 1 for match, 0 for no match).\n\n```tesseract\n::rmatch(regex, text)\n```'),
+            'rfind_all': new vscode.MarkdownString('**Regex Find All Function**\n\nFinds all match positions in text.\n\n```tesseract\n::rfind_all(regex, text)\n```'),
+            'rreplace': new vscode.MarkdownString('**Regex Replace Function**\n\nReplaces first match with replacement text.\n\n```tesseract\n::rreplace(regex, text, replacement)\n```'),
             'lsize': new vscode.MarkdownString('**Linked List Size Function**\n\nReturns the number of nodes in a linked list.\n\n```tesseract\n::lsize(linkedlist)\n```'),
             'input': new vscode.MarkdownString('**Input Function**\n\nGets user input from the console.\n\n```tesseract\n::input(prompt)\n```'),
             'fopen': new vscode.MarkdownString('**File Open Function**\n\nOpens a .txt file.\n\n```::fopen(filename, mode)\n```'),

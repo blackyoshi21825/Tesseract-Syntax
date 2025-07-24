@@ -209,7 +209,7 @@ class TesseractDiagnosticProvider {
             'qsize', 'addNode', 'removeNode', 'find', 'head', 'tail', 'lsize',
             'http_get', 'http_post', 'http_put', 'http_delete', 'fopen',
             'fread', 'fwrite', 'fclose', 'to_str', 'to_int', 'lsize', 'ladd', 'lremove',
-            'lget', 'lisEmpty'
+            'lget', 'lisEmpty', 'rmatch', 'rfind_all', 'rreplace'
         ];
 
         // Process the text line by line
@@ -217,34 +217,34 @@ class TesseractDiagnosticProvider {
         for (let i = 0; i < lines.length; i++) {
             const line = lines[i];
             const originalLine = text.split('\n')[i];
-            
+
             // Skip comments
             if (line.trim().startsWith('#')) {
                 continue;
             }
-            
+
             // Simple approach: directly check for each built-in function name
             for (const funcName of builtinFunctions) {
                 // Use word boundary to ensure we're matching whole words
                 const regex = new RegExp(`\\b${funcName}\\b`, 'g');
-                
+
                 let match;
                 while ((match = regex.exec(line)) !== null) {
                     // Check if this function is already properly prefixed with ::
                     const startIndex = match.index;
                     const prefixStart = Math.max(0, startIndex - 2);
                     const prefix = line.substring(prefixStart, startIndex);
-                    
+
                     if (prefix === '::') {
                         continue; // Already has proper prefix
                     }
-                    
+
                     // Make sure it's not part of another word
                     const prevChar = startIndex > 0 ? line[startIndex - 1] : ' ';
                     if (/[a-zA-Z0-9_]/.test(prevChar)) {
                         continue;
                     }
-                    
+
                     // Check if it's actually being used as a function
                     // Look for opening parenthesis or string after the function name
                     const afterFuncName = line.substring(startIndex + funcName.length).trim();
@@ -514,14 +514,14 @@ class TesseractDiagnosticProvider {
         const invalidTypeRegex = /<([^>\s]+)>/g;
         while ((match = invalidTypeRegex.exec(text)) !== null) {
             const type = match[1];
-            if (!['stack', 'queue', 'linked'].includes(type)) {
+            if (!['stack', 'queue', 'linked', 'regex'].includes(type)) {
                 const startPos = document.positionAt(match.index);
                 const endPos = document.positionAt(match.index + match[0].length);
                 const range = new vscode.Range(startPos, endPos);
 
                 diagnostics.push(new vscode.Diagnostic(
                     range,
-                    `Invalid data type <${type}>. Valid types are <stack>, <queue>, and <linked>`,
+                    `Invalid data type <${type}>. Valid types are <stack>, <queue>, <linked>, and <regex>`,
                     vscode.DiagnosticSeverity.Error
                 ));
             }
@@ -831,7 +831,7 @@ class TesseractDiagnosticProvider {
     isKeywordOrBuiltin(word) {
         const keywords = [
             'if', 'else', 'elseif', 'loop', 'while', 'import', 'let', 'func', 'class',
-            'and', 'or', 'not', 'true', 'false', 'dict', 'stack', 'queue', 'linked'
+            'and', 'or', 'not', 'true', 'false', 'dict', 'stack', 'queue', 'linked', 'regex'
         ];
 
         const builtinFunctions = [
@@ -841,7 +841,7 @@ class TesseractDiagnosticProvider {
             'qsize', 'addNode', 'removeNode', 'find', 'head', 'tail', 'lsize',
             'http_get', 'http_post', 'http_put', 'http_delete', 'fopen',
             'fread', 'fwrite', 'fclose', 'to_str', 'to_int', 'lsize', 'ladd', 'lremove',
-            'lget', 'lisEmpty'
+            'lget', 'lisEmpty', 'rmatch', 'rfind_all', 'rreplace'
         ];
 
         return keywords.includes(word) || builtinFunctions.includes(word);

@@ -78,6 +78,9 @@ const completionProvider = {
             { label: 'http_post', kind: vscode.CompletionItemKind.Function, detail: 'Make HTTP POST request' },
             { label: 'http_put', kind: vscode.CompletionItemKind.Function, detail: 'Make HTTP PUT request' },
             { label: 'http_delete', kind: vscode.CompletionItemKind.Function, detail: 'Make HTTP DELETE request' },
+            { label: 'rmatch', kind: vscode.CompletionItemKind.Function, detail: 'Match a string using regex' },
+            { label: 'rfind_all', kind: vscode.CompletionItemKind.Function, detail: 'Find using regex' },
+            { label: 'rreplace', kind: vscode.CompletionItemKind.Function, detail: 'Replace using regex' },
         ];
 
         // Types
@@ -85,7 +88,8 @@ const completionProvider = {
             { label: 'dict', kind: vscode.CompletionItemKind.Class, detail: 'Dictionary type' },
             { label: '<stack>', kind: vscode.CompletionItemKind.Class, detail: 'Stack type' },
             { label: '<queue>', kind: vscode.CompletionItemKind.Class, detail: 'Queue type' },
-            { label: '<linked>', kind: vscode.CompletionItemKind.Class, detail: 'Linked list type' }
+            { label: '<linked>', kind: vscode.CompletionItemKind.Class, detail: 'Linked list type' },
+            { label: '<regex>', kind: vscode.CompletionItemKind.Class, detail: 'Regex type' }
         ];
 
         // Check for built-in function context (after ::)

@@ -18,7 +18,7 @@ Syntax highlighting for:
 - Numbers - light green
 - Built-in functions (::print, ::len, etc.) - teal
 - Dictionary type (dict) - teal
-- Advanced data types (<stack>, <queue>, <linkedlist>) - purple
+- Advanced data types (<stack>, <queue>, <linkedlist>, <regex>) - purple
 - Self keyword - italic blue
 - Brackets and punctuation - white
 - Function names - yellow
