@@ -265,17 +265,32 @@ class TesseractDiagnosticProvider {
     }
 
     /**
-     * Remove all string literals from text
+     * Remove all string literals and comments from text
      * @param {string} text 
-     * @returns {string} Text with string literals replaced by spaces
+     * @returns {string} Text with string literals and comments replaced by spaces
      */
     removeAllStringLiterals(text) {
         let result = '';
         let inString = false;
+        let inComment = false;
         let escaped = false;
 
         for (let i = 0; i < text.length; i++) {
             const char = text[i];
+
+            // Handle comments
+            if (!inString && char === '#') {
+                inComment = true;
+            }
+            if (inComment && char === '\n') {
+                inComment = false;
+                result += char; // Keep newlines
+                continue;
+            }
+            if (inComment) {
+                result += ' '; // Replace comment content with spaces
+                continue;
+            }
 
             if (char === '\\') {
                 escaped = !escaped;
@@ -341,6 +356,12 @@ class TesseractDiagnosticProvider {
             }
         }
 
+        // Find loop variables (loop$ variable in range or loop$ variable := start => end)
+        const loopRegex = /loop\$\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*(?:in|:=|=)/g;
+        while ((match = loopRegex.exec(text)) !== null) {
+            declaredVariables.add(match[1]);
+        }
+
         // Add 'self' as it's a special keyword in Tesseract
         declaredVariables.add('self');
 
@@ -369,6 +390,12 @@ class TesseractDiagnosticProvider {
             // This ensures variables are recognized even when used later in the same line
             const lineDeclarationRegex = /let\$\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*(:)?=/g;
             while ((match = lineDeclarationRegex.exec(line)) !== null) {
+                declaredVariables.add(match[1]);
+            }
+
+            // Check for loop variables in this line
+            const lineLoopRegex = /loop\$\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*(?:in|:=|=)/g;
+            while ((match = lineLoopRegex.exec(line)) !== null) {
                 declaredVariables.add(match[1]);
             }
 
@@ -423,9 +450,9 @@ class TesseractDiagnosticProvider {
     }
 
     /**
-     * Remove string literals from a line of code
+     * Remove string literals and comments from a line of code
      * @param {string} line 
-     * @returns {string} Line with string literals replaced by spaces
+     * @returns {string} Line with string literals and comments replaced by spaces
      */
     removeStringLiterals(line) {
         let result = '';
@@ -434,6 +461,13 @@ class TesseractDiagnosticProvider {
 
         for (let i = 0; i < line.length; i++) {
             const char = line[i];
+
+            // Handle comments - everything after # is a comment (unless in string)
+            if (!inString && char === '#') {
+                // Replace rest of line with spaces to preserve positions
+                result += ' '.repeat(line.length - i);
+                break;
+            }
 
             if (char === '\\') {
                 escaped = !escaped;
