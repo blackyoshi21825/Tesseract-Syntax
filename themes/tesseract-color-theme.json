@@ -160,6 +160,18 @@
             "settings": {
                 "foreground": "#ec5252"
             }
+        },
+        {
+            "scope": "support.type.temporal.tesseract",
+            "settings": {
+                "foreground": "#ec5252"
+            }
+        },
+        {
+            "scope": "variable.other.temporal.tesseract",
+            "settings": {
+                "foreground": "#ec5252"
+            }
         }
     ]
 }

@@ -82,6 +82,9 @@ const completionProvider = {
             { label: 'rmatch', kind: vscode.CompletionItemKind.Function, detail: 'Match a string using regex' },
             { label: 'rfind_all', kind: vscode.CompletionItemKind.Function, detail: 'Find using regex' },
             { label: 'rreplace', kind: vscode.CompletionItemKind.Function, detail: 'Replace using regex' },
+            { label: 'temporal_aggregate', kind: vscode.CompletionItemKind.Function, detail: 'Aggregate temporal variable values' },
+            { label: 'temporal_pattern', kind: vscode.CompletionItemKind.Function, detail: 'Detect patterns in temporal variables' },
+            { label: 'temporal_condition', kind: vscode.CompletionItemKind.Function, detail: 'Check conditions in temporal window' },
         ];
 
         // Types
