@@ -122,7 +122,7 @@ class TesseractDiagnosticProvider {
         // Process the text to exclude string literals
         const processedText = this.removeAllStringLiterals(text);
 
-        const keywordsRequiringDollar = ['if', 'elseif', 'loop', 'while', 'import', 'let', 'func', 'class']; // 'else' doesn't need a $ suffix
+        const keywordsRequiringDollar = ['if', 'elseif', 'loop', 'while', 'import', 'let', 'func', 'class', 'temporal']; // 'else' doesn't need a $ suffix
 
         // Regular expression to find keywords without $ suffix
         // Looks for keywords followed by space, but not by $
@@ -332,10 +332,14 @@ class TesseractDiagnosticProvider {
             declaredVariables.add(match[1]);
         }
 
-        // Find function parameters
-        const functionRegex = /func\$\s+[a-zA-Z_][a-zA-Z0-9_]*\s*\(([^)]*)\)/g;
+        // Find function declarations and their parameters
+        const functionRegex = /func\$\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*\(([^)]*)\)/g;
         while ((match = functionRegex.exec(text)) !== null) {
-            const params = match[1].split(',');
+            // Add function name as declared
+            declaredVariables.add(match[1]);
+            
+            // Add function parameters
+            const params = match[2].split(',');
             for (const param of params) {
                 const trimmedParam = param.trim();
                 if (trimmedParam) {
@@ -362,8 +366,16 @@ class TesseractDiagnosticProvider {
             declaredVariables.add(match[1]);
         }
 
+        // Find temporal loop variables (temporal$ variable in temporal_var)
+        const temporalRegex = /temporal\$\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*in\s*([a-zA-Z_][a-zA-Z0-9_]*)/g;
+        while ((match = temporalRegex.exec(text)) !== null) {
+            declaredVariables.add(match[1]); // loop variable
+            declaredVariables.add(match[2]); // temporal variable being iterated
+        }
+
         // Add 'self' as it's a special keyword in Tesseract
         declaredVariables.add('self');
+        declaredVariables.add('in');
 
         // Add common built-in variables that might be used
         declaredVariables.add('args');
@@ -420,6 +432,12 @@ class TesseractDiagnosticProvider {
                 if (processedLine.includes(`func$${varName}`) ||
                     processedLine.includes(`func$ ${varName}`) ||
                     processedLine.match(new RegExp(`func\\$\\s*${varName}`))) {
+                    continue;
+                }
+
+                // Skip if it's in function parameter list
+                const funcParamRegex = new RegExp(`func\\$\\s*[a-zA-Z_][a-zA-Z0-9_]*\\s*\\([^)]*\\b${varName}\\b[^)]*\\)`);
+                if (funcParamRegex.test(processedLine)) {
                     continue;
                 }
 
@@ -548,14 +566,14 @@ class TesseractDiagnosticProvider {
         const invalidTypeRegex = /<([^>\s]+)>/g;
         while ((match = invalidTypeRegex.exec(text)) !== null) {
             const type = match[1];
-            if (!['stack', 'queue', 'linked', 'regex'].includes(type)) {
+            if (!['stack', 'queue', 'linked', 'regex'].includes(type) && !type.startsWith('temp@')) {
                 const startPos = document.positionAt(match.index);
                 const endPos = document.positionAt(match.index + match[0].length);
                 const range = new vscode.Range(startPos, endPos);
 
                 diagnostics.push(new vscode.Diagnostic(
                     range,
-                    `Invalid data type <${type}>. Valid types are <stack>, <queue>, <linked>, and <regex>`,
+                    `Invalid data type <${type}>. Valid types are <stack>, <queue>, <linked>, <regex>, and <temp@N>`,
                     vscode.DiagnosticSeverity.Error
                 ));
             }
@@ -658,6 +676,9 @@ class TesseractDiagnosticProvider {
 
         // Check for while$ without body
         this.checkControlStructures(text, document, diagnostics, 'while$');
+
+        // Check for temporal$ without body
+        this.checkControlStructures(text, document, diagnostics, 'temporal$');
 
         // Check for func$ without body
         this.checkFunctionDefinitions(text, document, diagnostics);
@@ -864,8 +885,8 @@ class TesseractDiagnosticProvider {
      */
     isKeywordOrBuiltin(word) {
         const keywords = [
-            'if', 'else', 'elseif', 'loop', 'while', 'import', 'let', 'func', 'class',
-            'and', 'or', 'not', 'true', 'false', 'dict', 'stack', 'queue', 'linked', 'regex'
+            'if', 'else', 'elseif', 'loop', 'while', 'import', 'let', 'func', 'class', 'temporal',
+            'and', 'or', 'not', 'true', 'false', 'dict', 'stack', 'queue', 'linked', 'regex', 'in', 'temp'
         ];
 
         const builtinFunctions = [

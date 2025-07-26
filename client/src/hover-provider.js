@@ -47,7 +47,8 @@ const hoverProvider = {
      */
     getTypeInfo(type) {
         const typeMap = {
-            'regex': new vscode.MarkdownString('**Regular Expression Type**\n\nUsed for pattern matching operations.\n\n```tesseract\nlet$ pattern := <regex> "pattern"//flags\n```\n\n**Flags:**\n- `i` - Case insensitive\n- `g` - Global matching')
+            'regex': new vscode.MarkdownString('**Regular Expression Type**\n\nUsed for pattern matching operations.\n\n```tesseract\nlet$ pattern := <regex> "pattern"//flags\n```\n\n**Flags:**\n- `i` - Case insensitive\n- `g` - Global matching'),
+            'temp': new vscode.MarkdownString('**Temporal Variable Type**\n\nA variable that maintains history of its values.\n\n```tesseract\nlet$ x := <temp@3>  # keeps 3 historical values\nx@0  # current value\nx@1  # previous value\nx@2  # value before that\n```')
         };
 
         return typeMap[type] || null;
@@ -77,6 +78,8 @@ const hoverProvider = {
             'let': new vscode.MarkdownString('**Variable Declaration Keyword**\n\nUse with $ suffix: `let$`'),
             'func': new vscode.MarkdownString('**Function Declaration Keyword**\n\nUse with $ suffix: `func$`'),
             'class': new vscode.MarkdownString('**Class Declaration Keyword**\n\nUse with $ suffix: `class$`'),
+            'temporal$': new vscode.MarkdownString('**Temporal Loop Statement**\n\nUsed to iterate over historical values of a temporal variable.\n\n```tesseract\ntemporal$ variable in temporal_var {\n    # variable takes each historical value\n}\n```'),
+            'temporal': new vscode.MarkdownString('**Temporal Loop Keyword**\n\nUse with $ suffix: `temporal$`'),
             'and': new vscode.MarkdownString('**Logical AND Operator**\n\nReturns true if both operands are true.'),
             'or': new vscode.MarkdownString('**Logical OR Operator**\n\nReturns true if at least one operand is true.'),
             'not': new vscode.MarkdownString('**Logical NOT Operator**\n\nReturns the opposite boolean value of the operand.'),
@@ -155,7 +158,8 @@ const hoverProvider = {
             'dict': new vscode.MarkdownString('**Dictionary Type**\n\nA key-value collection type.\n\n```tesseract\nlet$ myDict = dict{key1: value1, key2: value2}\n```'),
             'stack': new vscode.MarkdownString('**Stack Type**\n\nA last-in-first-out (LIFO) collection.\n\n```tesseract\nlet$ myStack = <stack>\n```'),
             'queue': new vscode.MarkdownString('**Queue Type**\n\nA first-in-first-out (FIFO) collection.\n\n```tesseract\nlet$ myQueue = <queue>\n```'),
-            'linked': new vscode.MarkdownString('**Linked List Type**\n\nA linear collection of elements where each element points to the next.\n\n```tesseract\nlet$ myList = <linked>\n```')
+            'linked': new vscode.MarkdownString('**Linked List Type**\n\nA linear collection of elements where each element points to the next.\n\n```tesseract\nlet$ myList = <linked>\n```'),
+            'temp': new vscode.MarkdownString('**Temporal Variable Type**\n\nA variable that maintains history of its values.\n\n```tesseract\nlet$ x := <temp@3>  # keeps 3 historical values\nx@0  # current value\nx@1  # previous value\nx@2  # value before that\n```')
         };
 
         return typeMap[typeName] || null;

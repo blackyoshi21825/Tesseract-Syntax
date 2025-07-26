@@ -28,13 +28,13 @@
         {
             "scope": "keyword.control.tesseract",
             "settings": {
-                "foreground": "#569CD6"
+                "foreground": "#87CEEB"
             }
         },
         {
             "scope": "storage.type.tesseract",
             "settings": {
-                "foreground": "#569CD6"
+                "foreground": "#87CEEB"
             }
         },
         {
@@ -52,7 +52,7 @@
         {
             "scope": "support.function.builtin.tesseract",
             "settings": {
-                "foreground": "#4EC9B0"
+                "foreground": "#008116"
             }
         },
         {
@@ -82,8 +82,7 @@
         {
             "scope": "support.type.advanced.tesseract",
             "settings": {
-                "foreground": "#C586C0",
-                "fontStyle": "bold"
+                "foreground": "#DA70D6"
             }
         },
         {
@@ -154,6 +153,12 @@
             "scope": "meta.structure.dictionary.tesseract",
             "settings": {
                 "foreground": "#CCCCCC"
+            }
+        },
+        {
+            "scope": "keyword.control.temporal.tesseract",
+            "settings": {
+                "foreground": "#ec5252"
             }
         }
     ]

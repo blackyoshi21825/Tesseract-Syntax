@@ -22,6 +22,7 @@ const completionProvider = {
             { label: 'elseif$', kind: vscode.CompletionItemKind.Keyword, detail: 'Else if clause' },
             { label: 'loop$', kind: vscode.CompletionItemKind.Keyword, detail: 'Loop statement' },
             { label: 'while$', kind: vscode.CompletionItemKind.Keyword, detail: 'While statement' },
+            { label: 'temporal$', kind: vscode.CompletionItemKind.Keyword, detail: 'Temporal loop statement' },
             { label: 'import$', kind: vscode.CompletionItemKind.Keyword, detail: 'Import statement' },
             { label: 'let$', kind: vscode.CompletionItemKind.Keyword, detail: 'Variable declaration' },
             { label: 'func$', kind: vscode.CompletionItemKind.Keyword, detail: 'Function declaration' },
@@ -89,7 +90,8 @@ const completionProvider = {
             { label: '<stack>', kind: vscode.CompletionItemKind.Class, detail: 'Stack type' },
             { label: '<queue>', kind: vscode.CompletionItemKind.Class, detail: 'Queue type' },
             { label: '<linked>', kind: vscode.CompletionItemKind.Class, detail: 'Linked list type' },
-            { label: '<regex>', kind: vscode.CompletionItemKind.Class, detail: 'Regex type' }
+            { label: '<regex>', kind: vscode.CompletionItemKind.Class, detail: 'Regex type' },
+            { label: '<temp@>', kind: vscode.CompletionItemKind.Class, detail: 'Temporal variable type' }
         ];
 
         // Check for built-in function context (after ::)

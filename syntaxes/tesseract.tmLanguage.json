@@ -12,6 +12,9 @@
             "include": "#keywords"
         },
         {
+            "include": "#temporal"
+        },
+        {
             "include": "#functions"
         },
         {
@@ -86,12 +89,28 @@
                     "match": "\\b(if|else|elseif|loop|import)\\$\\b"
                 },
                 {
+                    "name": "keyword.control.temporal.tesseract",
+                    "match": "\\btemporal\\$\\b"
+                },
+                {
                     "name": "storage.type.tesseract",
                     "match": "\\b(let|func|class)\\$\\b"
                 },
                 {
                     "name": "keyword.operator.logical.tesseract",
                     "match": "\\b(and|or|not|true|false)\\b"
+                }
+            ]
+        },
+        "temporal": {
+            "patterns": [
+                {
+                    "name": "keyword.control.temporal.tesseract",
+                    "match": "<temp@[0-9]+>"
+                },
+                {
+                    "name": "keyword.control.temporal.tesseract",
+                    "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*@[0-9]+\\b"
                 }
             ]
         },
