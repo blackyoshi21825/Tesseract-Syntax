@@ -55,6 +55,13 @@ function activate(context) {
             diagnosticProvider.updateDiagnostics(document);
         })
     );
+    
+    // Clear diagnostics when a document is closed/deleted
+    context.subscriptions.push(
+        vscode.workspace.onDidCloseTextDocument(document => {
+            diagnosticProvider.diagnosticCollection.delete(document.uri);
+        })
+    );
 
     // Add disposables to context
     context.subscriptions.push(completionDisposable, hoverDisposable);

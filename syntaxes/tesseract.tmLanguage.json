@@ -126,7 +126,7 @@
                 },
                 {
                     "name": "keyword.control.temporal.tesseract",
-                    "match": "::(temporal_aggregate|temporal_pattern|temporal_condition|sliding_window_stats|sensitivity_threshold)\\b"
+                    "match": "::(temporal_aggregate|temporal_pattern|temporal_condition|sliding_window_stats|sensitivity_threshold|temporal_query|temporal_correlate|temporal_interpolate)\\b"
                 }
             ]
         },

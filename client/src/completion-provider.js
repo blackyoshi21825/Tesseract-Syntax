@@ -87,6 +87,9 @@ const completionProvider = {
             { label: 'temporal_condition', kind: vscode.CompletionItemKind.Function, detail: 'Check conditions in temporal window' },
             { label: 'sliding_window_stats', kind: vscode.CompletionItemKind.Function, detail: 'Statistical analysis over sliding window' },
             { label: 'sensitivity_threshold', kind: vscode.CompletionItemKind.Function, detail: 'Monitor threshold with sensitivity' },
+            { label: 'temporal_query', kind: vscode.CompletionItemKind.Function, detail: 'Query temporal data within time windows' },
+            { label: 'temporal_correlate', kind: vscode.CompletionItemKind.Function, detail: 'Calculate correlation between temporal variables' },
+            { label: 'temporal_interpolate', kind: vscode.CompletionItemKind.Function, detail: 'Interpolate missing values in temporal data' },
         ];
 
         // Types
