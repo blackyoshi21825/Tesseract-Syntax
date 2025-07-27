@@ -85,6 +85,8 @@ const completionProvider = {
             { label: 'temporal_aggregate', kind: vscode.CompletionItemKind.Function, detail: 'Aggregate temporal variable values' },
             { label: 'temporal_pattern', kind: vscode.CompletionItemKind.Function, detail: 'Detect patterns in temporal variables' },
             { label: 'temporal_condition', kind: vscode.CompletionItemKind.Function, detail: 'Check conditions in temporal window' },
+            { label: 'sliding_window_stats', kind: vscode.CompletionItemKind.Function, detail: 'Statistical analysis over sliding window' },
+            { label: 'sensitivity_threshold', kind: vscode.CompletionItemKind.Function, detail: 'Monitor threshold with sensitivity' },
         ];
 
         // Types
