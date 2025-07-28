@@ -66,6 +66,9 @@
         },
         {
             "include": "#data_structures"
+        },
+        {
+            "include": "#sets"
         }
     ],
     "repository": {
@@ -85,6 +88,26 @@
                 {
                     "name": "variable.parameter.format.tesseract",
                     "match": "@[sdf]"
+                },
+                {
+                    "name": "meta.embedded.expression.tesseract",
+                    "begin": "\\$\\{",
+                    "end": "\\}",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.template-expression.begin.tesseract"
+                        }
+                    },
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.template-expression.end.tesseract"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#variables"
+                        }
+                    ]
                 }
             ]
         },
@@ -289,6 +312,36 @@
                             ]
                         }
                     }
+                }
+            ]
+        },
+        "sets": {
+            "name": "meta.structure.set.tesseract",
+            "begin": "\\{(?!.*:)",
+            "end": "\\}",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.definition.set.begin.tesseract"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.set.end.tesseract"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#numbers"
+                },
+                {
+                    "include": "#strings"
+                },
+                {
+                    "include": "#variables"
+                },
+                {
+                    "name": "punctuation.separator.set.tesseract",
+                    "match": ","
                 }
             ]
         }

@@ -175,7 +175,8 @@ const hoverProvider = {
             'stack': new vscode.MarkdownString('**Stack Type**\n\nA last-in-first-out (LIFO) collection.\n\n```tesseract\nlet$ myStack = <stack>\n```'),
             'queue': new vscode.MarkdownString('**Queue Type**\n\nA first-in-first-out (FIFO) collection.\n\n```tesseract\nlet$ myQueue = <queue>\n```'),
             'linked': new vscode.MarkdownString('**Linked List Type**\n\nA linear collection of elements where each element points to the next.\n\n```tesseract\nlet$ myList = <linked>\n```'),
-            'temp': new vscode.MarkdownString('**Temporal Variable Type**\n\nA variable that maintains history of its values.\n\n```tesseract\nlet$ x := <temp@3>  # keeps 3 historical values\nx@0  # current value\nx@1  # previous value\nx@2  # value before that\n```')
+            'temp': new vscode.MarkdownString('**Temporal Variable Type**\n\nA variable that maintains history of its values.\n\n```tesseract\nlet$ x := <temp@3>  # keeps 3 historical values\nx@0  # current value\nx@1  # previous value\nx@2  # value before that\n```'),
+            'set': new vscode.MarkdownString('**Set Type**\n\nA collection of unique elements.\n\n```tesseract\nlet$ mySet := {1, 2, 3, 2, 1};  # Automatically removes duplicates\n::print mySet;  # prints {1, 2, 3}\n```')
         };
 
         return typeMap[typeName] || null;

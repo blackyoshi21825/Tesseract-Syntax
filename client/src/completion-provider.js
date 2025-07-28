@@ -106,6 +106,12 @@ const completionProvider = {
             { label: '<temp@>', kind: vscode.CompletionItemKind.Class, detail: 'Temporal variable type' }
         ];
 
+        // String interpolation and sets
+        const structures = [
+            { label: '${variable}', kind: vscode.CompletionItemKind.Snippet, detail: 'String interpolation' },
+            { label: '{1, 2, 3}', kind: vscode.CompletionItemKind.Snippet, detail: 'Set literal' }
+        ];
+
         // Check for built-in function context (after ::)
         if (linePrefix.endsWith('::')) {
             return builtinFunctions.map(item => {
@@ -115,8 +121,8 @@ const completionProvider = {
             });
         }
 
-        // Default completions (keywords, types, and built-in functions)
-        return [...keywords, ...types, ...builtinFunctions].map(item => {
+        // Default completions (keywords, types, structures, and built-in functions)
+        return [...keywords, ...types, ...structures, ...builtinFunctions].map(item => {
             const completionItem = new vscode.CompletionItem(item.label, item.kind);
             completionItem.detail = item.detail;
             return completionItem;

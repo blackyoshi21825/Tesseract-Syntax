@@ -476,6 +476,8 @@ class TesseractDiagnosticProvider {
         let result = '';
         let inString = false;
         let escaped = false;
+        let inInterpolation = false;
+        let braceCount = 0;
 
         for (let i = 0; i < line.length; i++) {
             const char = line[i];
@@ -489,16 +491,31 @@ class TesseractDiagnosticProvider {
 
             if (char === '\\') {
                 escaped = !escaped;
-                result += inString ? ' ' : char;
+                result += inString && !inInterpolation ? ' ' : char;
                 continue;
             }
 
             if (char === '"' && !escaped) {
                 inString = !inString;
                 result += char;
+            } else if (inString && char === '$' && i + 1 < line.length && line[i + 1] === '{' && !escaped) {
+                // Start of string interpolation
+                inInterpolation = true;
+                braceCount = 1;
+                result += char;
+            } else if (inString && inInterpolation) {
+                if (char === '{') {
+                    braceCount++;
+                } else if (char === '}') {
+                    braceCount--;
+                    if (braceCount === 0) {
+                        inInterpolation = false;
+                    }
+                }
+                result += char; // Keep interpolation content
             } else {
                 // Replace characters inside strings with spaces to preserve string length
-                result += inString ? ' ' : char;
+                result += inString && !inInterpolation ? ' ' : char;
             }
 
             if (char !== '\\') {
@@ -521,6 +538,9 @@ class TesseractDiagnosticProvider {
 
         // Check for malformed dictionaries
         this.checkDictionaries(text, document, diagnostics);
+
+        // Check for malformed sets
+        this.checkSets(text, document, diagnostics);
     }
 
     /**
@@ -901,6 +921,48 @@ class TesseractDiagnosticProvider {
         ];
 
         return keywords.includes(word) || builtinFunctions.includes(word);
+    }
+
+    /**
+     * Check for malformed sets
+     * @param {string} text 
+     * @param {vscode.TextDocument} document 
+     * @param {vscode.Diagnostic[]} diagnostics 
+     */
+    checkSets(text, document, diagnostics) {
+        // Check for unclosed sets (simple check for { without matching })
+        const setRegex = /\{(?![^}]*:)/g; // { not followed by : (to distinguish from dict)
+        let match;
+
+        while ((match = setRegex.exec(text)) !== null) {
+            // Find the matching closing brace
+            let braceCount = 1;
+            let closingIndex = -1;
+
+            for (let i = match.index + 1; i < text.length; i++) {
+                if (text[i] === '{') {
+                    braceCount++;
+                } else if (text[i] === '}') {
+                    braceCount--;
+                    if (braceCount === 0) {
+                        closingIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            if (closingIndex === -1) {
+                const startPos = document.positionAt(match.index);
+                const endPos = document.positionAt(match.index + 1);
+                const range = new vscode.Range(startPos, endPos);
+
+                diagnostics.push(new vscode.Diagnostic(
+                    range,
+                    'Unclosed set. Missing closing }',
+                    vscode.DiagnosticSeverity.Error
+                ));
+            }
+        }
     }
 }
 
