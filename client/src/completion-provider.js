@@ -95,6 +95,13 @@ const completionProvider = {
             { label: 'temporal_query', kind: vscode.CompletionItemKind.Function, detail: 'Query temporal data within time windows' },
             { label: 'temporal_correlate', kind: vscode.CompletionItemKind.Function, detail: 'Calculate correlation between temporal variables' },
             { label: 'temporal_interpolate', kind: vscode.CompletionItemKind.Function, detail: 'Interpolate missing values in temporal data' },
+            { label: 'split', kind: vscode.CompletionItemKind.Function, detail: 'Split string by delimiter' },
+            { label: 'join', kind: vscode.CompletionItemKind.Function, detail: 'Join list elements with separator' },
+            { label: 'replace', kind: vscode.CompletionItemKind.Function, detail: 'Replace occurrences in string' },
+            { label: 'substring', kind: vscode.CompletionItemKind.Function, detail: 'Extract substring' },
+            { label: 'length', kind: vscode.CompletionItemKind.Function, detail: 'Get string length' },
+            { label: 'upper', kind: vscode.CompletionItemKind.Function, detail: 'Convert to uppercase' },
+            { label: 'lower', kind: vscode.CompletionItemKind.Function, detail: 'Convert to lowercase' }
             { label: 'type', kind: vscode.CompletionItemKind.Function, detail: 'Get type of variable as string' },
         ];
 
