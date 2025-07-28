@@ -122,7 +122,7 @@ class TesseractDiagnosticProvider {
         // Process the text to exclude string literals
         const processedText = this.removeAllStringLiterals(text);
 
-        const keywordsRequiringDollar = ['if', 'elseif', 'loop', 'while', 'import', 'let', 'func', 'class', 'temporal']; // 'else' doesn't need a $ suffix
+        const keywordsRequiringDollar = ['if', 'elseif', 'loop', 'while', 'import', 'let', 'func', 'class', 'temporal', 'try', 'catch', 'finally', 'throw']; // 'else' doesn't need a $ suffix
 
         // Regular expression to find keywords without $ suffix
         // Looks for keywords followed by space, but not by $
@@ -886,6 +886,7 @@ class TesseractDiagnosticProvider {
     isKeywordOrBuiltin(word) {
         const keywords = [
             'if', 'else', 'elseif', 'loop', 'while', 'import', 'let', 'func', 'class', 'temporal',
+            'try', 'catch', 'finally', 'throw',
             'and', 'or', 'not', 'true', 'false', 'dict', 'stack', 'queue', 'linked', 'regex', 'in', 'temp'
         ];
 

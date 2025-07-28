@@ -12,6 +12,12 @@
             "include": "#keywords"
         },
         {
+            "include": "#exceptions"
+        },
+        {
+            "include": "#lambdas"
+        },
+        {
             "include": "#temporal"
         },
         {
@@ -87,6 +93,10 @@
                 {
                     "name": "keyword.control.tesseract",
                     "match": "\\b(if|else|elseif|loop|import)\\$\\b"
+                },
+                {
+                    "name": "keyword.control.exception.tesseract",
+                    "match": "\\b(try|catch|finally|throw)\\$\\b"
                 },
                 {
                     "name": "keyword.control.temporal.tesseract",
@@ -225,6 +235,60 @@
                             "include": "$self"
                         }
                     ]
+                }
+            ]
+        },
+        "exceptions": {
+            "patterns": [
+                {
+                    "name": "meta.try-catch.tesseract",
+                    "begin": "\\btry\\$\\s*\\{",
+                    "end": "\\}",
+                    "patterns": [
+                        {
+                            "include": "$self"
+                        }
+                    ]
+                },
+                {
+                    "name": "meta.catch.tesseract",
+                    "begin": "\\bcatch\\$\\s*\\{",
+                    "end": "\\}",
+                    "patterns": [
+                        {
+                            "include": "$self"
+                        }
+                    ]
+                },
+                {
+                    "name": "meta.finally.tesseract",
+                    "begin": "\\bfinally\\$\\s*\\{",
+                    "end": "\\}",
+                    "patterns": [
+                        {
+                            "include": "$self"
+                        }
+                    ]
+                }
+            ]
+        },
+        "lambdas": {
+            "patterns": [
+                {
+                    "name": "meta.lambda.tesseract",
+                    "match": "\\(([^)]*)\\)\\s*=>\\s*([^;]+)",
+                    "captures": {
+                        "1": {
+                            "name": "variable.parameter.lambda.tesseract"
+                        },
+                        "2": {
+                            "patterns": [
+                                {
+                                    "include": "$self"
+                                }
+                            ]
+                        }
+                    }
                 }
             ]
         }
