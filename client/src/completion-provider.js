@@ -35,7 +35,8 @@ const completionProvider = {
             { label: 'or', kind: vscode.CompletionItemKind.Operator, detail: 'Logical OR' },
             { label: 'not', kind: vscode.CompletionItemKind.Operator, detail: 'Logical NOT' },
             { label: 'true', kind: vscode.CompletionItemKind.Value, detail: 'Boolean true' },
-            { label: 'false', kind: vscode.CompletionItemKind.Value, detail: 'Boolean false' }
+            { label: 'false', kind: vscode.CompletionItemKind.Value, detail: 'Boolean false' },
+            { label: 'UNDEF', kind: vscode.CompletionItemKind.Value, detail: 'Undefined/null value' }
         ];
 
         // Built-in functions (after ::)
@@ -94,6 +95,7 @@ const completionProvider = {
             { label: 'temporal_query', kind: vscode.CompletionItemKind.Function, detail: 'Query temporal data within time windows' },
             { label: 'temporal_correlate', kind: vscode.CompletionItemKind.Function, detail: 'Calculate correlation between temporal variables' },
             { label: 'temporal_interpolate', kind: vscode.CompletionItemKind.Function, detail: 'Interpolate missing values in temporal data' },
+            { label: 'type', kind: vscode.CompletionItemKind.Function, detail: 'Get type of variable as string' },
         ];
 
         // Types

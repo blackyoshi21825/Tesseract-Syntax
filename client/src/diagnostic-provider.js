@@ -209,7 +209,7 @@ class TesseractDiagnosticProvider {
             'qsize', 'addNode', 'removeNode', 'find', 'head', 'tail', 'lsize',
             'http_get', 'http_post', 'http_put', 'http_delete', 'fopen',
             'fread', 'fwrite', 'fclose', 'to_str', 'to_int', 'lsize', 'ladd', 'lremove',
-            'lget', 'lisEmpty', 'rmatch', 'rfind_all', 'rreplace', 'temporal_aggregate', 'temporal_pattern', 'temporal_condition'
+            'lget', 'lisEmpty', 'rmatch', 'rfind_all', 'rreplace', 'temporal_aggregate', 'temporal_pattern', 'temporal_condition', 'type'
         ];
 
         // Process the text line by line
@@ -376,6 +376,7 @@ class TesseractDiagnosticProvider {
         // Add 'self' as it's a special keyword in Tesseract
         declaredVariables.add('self');
         declaredVariables.add('in');
+        declaredVariables.add('UNDEF');
 
         // Add common built-in variables that might be used
         declaredVariables.add('args');
@@ -907,7 +908,7 @@ class TesseractDiagnosticProvider {
         const keywords = [
             'if', 'else', 'elseif', 'loop', 'while', 'import', 'let', 'func', 'class', 'temporal',
             'try', 'catch', 'finally', 'throw',
-            'and', 'or', 'not', 'true', 'false', 'dict', 'stack', 'queue', 'linked', 'regex', 'in', 'temp'
+            'and', 'or', 'not', 'true', 'false', 'dict', 'stack', 'queue', 'linked', 'regex', 'in', 'temp', 'UNDEF'
         ];
 
         const builtinFunctions = [
@@ -917,7 +918,7 @@ class TesseractDiagnosticProvider {
             'qsize', 'addNode', 'removeNode', 'find', 'head', 'tail', 'lsize',
             'http_get', 'http_post', 'http_put', 'http_delete', 'fopen',
             'fread', 'fwrite', 'fclose', 'to_str', 'to_int', 'lsize', 'ladd', 'lremove',
-            'lget', 'lisEmpty', 'rmatch', 'rfind_all', 'rreplace', 'temporal_aggregate', 'temporal_pattern', 'temporal_condition'
+            'lget', 'lisEmpty', 'rmatch', 'rfind_all', 'rreplace', 'temporal_aggregate', 'temporal_pattern', 'temporal_condition', 'type'
         ];
 
         return keywords.includes(word) || builtinFunctions.includes(word);

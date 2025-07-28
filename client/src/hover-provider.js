@@ -92,7 +92,8 @@ const hoverProvider = {
             'or': new vscode.MarkdownString('**Logical OR Operator**\n\nReturns true if at least one operand is true.'),
             'not': new vscode.MarkdownString('**Logical NOT Operator**\n\nReturns the opposite boolean value of the operand.'),
             'true': new vscode.MarkdownString('**Boolean Value: True**\n\nRepresents a boolean true value.'),
-            'false': new vscode.MarkdownString('**Boolean Value: False**\n\nRepresents a boolean false value.')
+            'false': new vscode.MarkdownString('**Boolean Value: False**\n\nRepresents a boolean false value.'),
+            'UNDEF': new vscode.MarkdownString('**Undefined Value**\n\nRepresents an undefined/null value.\n\n```tesseract\nlet$ x := UNDEF;\n::print x;         # prints "UNDEF"\n::type(x);         # returns "undef"\n\n# Variables are auto-UNDEF when accessed without assignment\n::print undefined_var;  # prints "UNDEF"\n```')
         };
 
         return keywordMap[keyword] || null;
@@ -159,6 +160,7 @@ const hoverProvider = {
             'temporal_query': new vscode.MarkdownString('**Temporal Query Function**\n\nQuery temporal data within specific time windows.\n\n```tesseract\n::temporal_query(variable_name, time_window, condition)\n```\n\n**Parameters:**\n- `variable_name` - String name of temporal variable\n- `time_window` - Time window specification ("last 5 minutes", "between 10:00 12:00")\n- `condition` - Condition to check ("> 100", "< 50", "== 75")\n\n**Examples:**\n```tesseract\n::temporal_query("sensor", "last 3", "> 100")           # Count > 100 in last 3\n::temporal_query("sensor", "between start end", "== 98") # Count == 98 in all\n```'),
             'temporal_correlate': new vscode.MarkdownString('**Temporal Correlation Function**\n\nCalculate correlation between two temporal variables.\n\n```tesseract\n::temporal_correlate(var1, var2, window_size)\n```\n\n**Parameters:**\n- `var1` - String name of first temporal variable\n- `var2` - String name of second temporal variable\n- `window_size` - Number of recent values to correlate\n\n**Returns:**\n- Pearson correlation coefficient (-1.0 to 1.0)\n\n**Examples:**\n```tesseract\n::temporal_correlate("temp", "humidity", 4)  # Correlation over last 4 values\n```'),
             'temporal_interpolate': new vscode.MarkdownString('**Temporal Interpolation Function**\n\nInterpolate missing values in temporal data.\n\n```tesseract\n::temporal_interpolate(variable_name, missing_index)\n```\n\n**Parameters:**\n- `variable_name` - String name of temporal variable\n- `missing_index` - Index where data is missing\n\n**Returns:**\n- Interpolated value based on neighboring data points\n\n**Examples:**\n```tesseract\n::temporal_interpolate("data", 1)  # Interpolate middle value\n::temporal_interpolate("data", 0)  # Edge case - uses nearest neighbor\n```'),
+            'type': new vscode.MarkdownString('**Type Function**\n\nReturns the type of a variable as a string.\n\n```tesseract\n::type(variable)\n```\n\n**Returns:**\n- String representation of the variable\'s type\n- "undef" for UNDEF values\n\n**Examples:**\n```tesseract\nlet$ x := 42;\n::print ::type(x);  # prints "int"\n\nlet$ y := UNDEF;\n::print ::type(y);  # prints "undef"\n```'),
         };
 
         return functionMap[funcName] || null;
