@@ -210,7 +210,7 @@ class TesseractDiagnosticProvider {
             'http_get', 'http_post', 'http_put', 'http_delete', 'fopen',
             'fread', 'fwrite', 'fclose', 'to_str', 'to_int', 'lsize', 'ladd', 'lremove',
             'lget', 'lisEmpty', 'rmatch', 'rfind_all', 'rreplace', 'temporal_aggregate', 'temporal_pattern', 'temporal_condition', 'type',
-            'split', 'join', 'replace', 'substring', 'length', 'upper', 'lower'
+            'split', 'join', 'replace', 'substring', 'length', 'upper', 'lower', 'random'
         ];
 
         // Process the text line by line
@@ -920,7 +920,7 @@ class TesseractDiagnosticProvider {
             'http_get', 'http_post', 'http_put', 'http_delete', 'fopen',
             'fread', 'fwrite', 'fclose', 'to_str', 'to_int', 'lsize', 'ladd', 'lremove',
             'lget', 'lisEmpty', 'rmatch', 'rfind_all', 'rreplace', 'temporal_aggregate', 'temporal_pattern', 'temporal_condition', 'type',
-            'split', 'join', 'replace', 'substring', 'length', 'upper', 'lower'
+            'split', 'join', 'replace', 'substring', 'length', 'upper', 'lower', 'random'
         ];
 
         return keywords.includes(word) || builtinFunctions.includes(word);

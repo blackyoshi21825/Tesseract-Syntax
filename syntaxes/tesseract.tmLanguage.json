@@ -159,7 +159,7 @@
                 },
                 {
                     "name": "support.function.builtin.tesseract",
-                    "match": "::(print|len|append|prepend|pop|insert|remove|pattern_match|get|set|keys|values|push|peek|size|empty|enqueue|dequeue|front|back|isEmpty|qsize|addNode|removeNode|find|head|tail|lsize|http_get|http_post|http_put|http_delete|fopen|fread|fwrite|fclose|to_str|to_int|rmatch|rfind_all|rreplace|type|split|join|replace|substring|length|upper|lower)\\b"
+                    "match": "::(print|len|append|prepend|pop|insert|remove|pattern_match|get|set|keys|values|push|peek|size|empty|enqueue|dequeue|front|back|isEmpty|qsize|addNode|removeNode|find|head|tail|lsize|http_get|http_post|http_put|http_delete|fopen|fread|fwrite|fclose|to_str|to_int|rmatch|rfind_all|rreplace|type|split|join|replace|substring|length|upper|lower|random)\\b"
                 },
                 {
                     "name": "keyword.control.temporal.tesseract",

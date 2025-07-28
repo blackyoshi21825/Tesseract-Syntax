@@ -101,7 +101,8 @@ const completionProvider = {
             { label: 'substring', kind: vscode.CompletionItemKind.Function, detail: 'Extract substring' },
             { label: 'length', kind: vscode.CompletionItemKind.Function, detail: 'Get string length' },
             { label: 'upper', kind: vscode.CompletionItemKind.Function, detail: 'Convert to uppercase' },
-            { label: 'lower', kind: vscode.CompletionItemKind.Function, detail: 'Convert to lowercase' }
+            { label: 'lower', kind: vscode.CompletionItemKind.Function, detail: 'Convert to lowercase' },
+            { label: 'random', kind: vscode.CompletionItemKind.Function, detail: 'Generate random number' },
             { label: 'type', kind: vscode.CompletionItemKind.Function, detail: 'Get type of variable as string' },
         ];
 

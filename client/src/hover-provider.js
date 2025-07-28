@@ -167,6 +167,7 @@ const hoverProvider = {
             'length': new vscode.MarkdownString('**String Length Function**\n\nReturns the length of a string.\n\n```tesseract\n::length(string)\n```\n\n**Examples:**\n```tesseract\n::length("hello")  # returns 5\n```'),
             'upper': new vscode.MarkdownString('**String Uppercase Function**\n\nConverts a string to uppercase.\n\n```tesseract\n::upper(string)\n```\n\n**Examples:**\n```tesseract\n::upper("hello")  # returns "HELLO"\n```'),
             'lower': new vscode.MarkdownString('**String Lowercase Function**\n\nConverts a string to lowercase.\n\n```tesseract\n::lower(string)\n```\n\n**Examples:**\n```tesseract\n::lower("HELLO")  # returns "hello"\n```'),
+            'random': new vscode.MarkdownString('**Random Number Generation Function**\n\nGenerates random numbers within specified constraints.\n\n```tesseract\n::random(start, end)\n::random(start, end, increment)\n```\n\n**Examples:**\n```tesseract\n::random(1, 10)        # Random integer between 1 and 10\n::random(0, 20, 2)     # Random even number between 0 and 20\n::random(1, 5, 0.5)    # Random number: 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, or 5\n```'),
             'type': new vscode.MarkdownString('**Type Function**\n\nReturns the type of a variable as a string.\n\n```tesseract\n::type(variable)\n```\n\n**Returns:**\n- String representation of the variable\'s type\n- "undef" for UNDEF values\n\n**Examples:**\n```tesseract\nlet$ x := 42;\n::print ::type(x);  # prints "int"\n\nlet$ y := UNDEF;\n::print ::type(y);  # prints "undef"\n```'),
         };
 
