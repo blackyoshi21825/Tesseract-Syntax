@@ -209,7 +209,8 @@ class TesseractDiagnosticProvider {
             'qsize', 'addNode', 'removeNode', 'find', 'head', 'tail', 'lsize',
             'http_get', 'http_post', 'http_put', 'http_delete', 'fopen',
             'fread', 'fwrite', 'fclose', 'to_str', 'to_int', 'lsize', 'ladd', 'lremove',
-            'lget', 'lisEmpty', 'rmatch', 'rfind_all', 'rreplace', 'temporal_aggregate', 'temporal_pattern', 'temporal_condition', 'type'
+            'lget', 'lisEmpty', 'rmatch', 'rfind_all', 'rreplace', 'temporal_aggregate', 'temporal_pattern', 'temporal_condition', 'type',
+            'split', 'join', 'replace', 'substring', 'length', 'upper', 'lower'
         ];
 
         // Process the text line by line
@@ -918,7 +919,8 @@ class TesseractDiagnosticProvider {
             'qsize', 'addNode', 'removeNode', 'find', 'head', 'tail', 'lsize',
             'http_get', 'http_post', 'http_put', 'http_delete', 'fopen',
             'fread', 'fwrite', 'fclose', 'to_str', 'to_int', 'lsize', 'ladd', 'lremove',
-            'lget', 'lisEmpty', 'rmatch', 'rfind_all', 'rreplace', 'temporal_aggregate', 'temporal_pattern', 'temporal_condition', 'type'
+            'lget', 'lisEmpty', 'rmatch', 'rfind_all', 'rreplace', 'temporal_aggregate', 'temporal_pattern', 'temporal_condition', 'type',
+            'split', 'join', 'replace', 'substring', 'length', 'upper', 'lower'
         ];
 
         return keywords.includes(word) || builtinFunctions.includes(word);
