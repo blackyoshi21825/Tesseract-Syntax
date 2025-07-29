@@ -115,7 +115,7 @@
             "patterns": [
                 {
                     "name": "keyword.control.tesseract",
-                    "match": "\\b(if|else|elseif|loop|import)\\$\\b"
+                    "match": "\\b(if|else|elseif|loop|foreach|import)\\$\\b"
                 },
                 {
                     "name": "keyword.control.exception.tesseract",
